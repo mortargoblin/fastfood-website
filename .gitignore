@@ -1,10 +1,6 @@
 main.css
 tailwind.sh
 
-# Logs
-
-main.css
-
 logs
 *.log
 npm-debug.log*

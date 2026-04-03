@@ -7,7 +7,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-50: oklch(98.7% 0.022 95.277);
     --color-white: #fff;
     --spacing: 0.25rem;
     --default-font-family: var(--font-sans);
@@ -169,18 +168,6 @@
   .flex-row {
     flex-direction: row;
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
-  .border-4 {
-    border-style: var(--tw-border-style);
-    border-width: 4px;
-  }
-  .border-t-4 {
-    border-top-style: var(--tw-border-style);
-    border-top-width: 4px;
-  }
   .border-b-4 {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 4px;
@@ -194,23 +181,11 @@
   .bg-\[\#1d7874\] {
     background-color: #1d7874;
   }
-  .bg-\[\#071E22\] {
-    background-color: #071E22;
-  }
-  .bg-\[\#679289\] {
-    background-color: #679289;
-  }
-  .bg-\[\#\] {
-    background-color: #;
-  }
   .bg-\[\#f4c095\] {
     background-color: #f4c095;
   }
   .p-3 {
     padding: calc(var(--spacing) * 3);
-  }
-  .p-5 {
-    padding: calc(var(--spacing) * 5);
   }
   .text-white {
     color: var(--color-white);
@@ -219,13 +194,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: #679289;
-      }
-    }
-  }
-  .hover\:bg-amber-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-amber-50);
       }
     }
   }
