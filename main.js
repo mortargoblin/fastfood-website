@@ -26,11 +26,11 @@ function updateMenuGrid() {
 
   const grid = document.querySelector('#menu-grid')
   grid.innerHTML = '';
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 30; i++) {
     grid.insertAdjacentHTML('beforeend', 
-      `<div class="bg-[#679289] p-4 rounded-xl">
-        <img src="img/bigmac.avif">
-        item
+      `<div class="bg-[#679289] p-4 rounded-xl max-w-60 m-auto">
+        <img src="img/bigmac.avif" class="max-w-50 m-auto" alt="item">
+        <div class="text-white text-center">Item</div>
       </div>`
     );
   }
@@ -44,8 +44,7 @@ menuBtn.addEventListener('click', () => {
 });
 
 infoBtn.addEventListener('click', () => {
-  page.innerHTML = '<h1>kaskdakskdka</h1>'
+  loadPageContent('info.html', page, updateMenuGrid);
 });
-
 
 loadPageContent('home.html', page, updateMenuGrid);
