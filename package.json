@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.2.2",
+    "cookie-parser": "^1.4.7",
+    "mysql2": "^3.20.0",
     "tailwindcss": "^4.2.2"
   }
 }
