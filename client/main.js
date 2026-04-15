@@ -76,6 +76,9 @@ infoBtn.addEventListener('click', () => {
 authBtn.addEventListener('click', () => {
   loadPageContent('auth.html');
 });
+adminBtn.addEventListener('click', () => {
+  loadPageContent('admin.html');
+});
 
 if (await getCookie("clientside_tier") === "1") {
   adminBtn.style.visibility = "visible";
