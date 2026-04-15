@@ -55,6 +55,7 @@ function updateMenuGrid() {
       `<div class="bg-[#679289] p-4 rounded-xl max-w-60 m-auto">
         <img src="img/bigmac.avif" class="max-w-50 m-auto" alt="item">
         <div class="text-white text-center">Item</div>
+        <p class="text-center">description</p>
       </div>`
     );
   }
@@ -62,30 +63,27 @@ function updateMenuGrid() {
 
 async function load()
 {
-homeBtn.addEventListener('click', () => {
-  loadPageContent('home.html');
-});
+  homeBtn.addEventListener('click', () => {
+    loadPageContent('home.html');
+  });
 
-menuBtn.addEventListener('click', () => {
-  loadPageContent('menu.html');
-});
+  menuBtn.addEventListener('click', () => {
+    loadPageContent('menu.html');
+  });
 
-infoBtn.addEventListener('click', () => {
-  loadPageContent('info.html');
-});
-authBtn.addEventListener('click', () => {
-  loadPageContent('auth.html');
-});
-adminBtn.addEventListener('click', () => {
-  loadPageContent('admin.html');
-});
+  infoBtn.addEventListener('click', () => {
+    loadPageContent('info.html');
+  });
+  authBtn.addEventListener('click', () => {
+    loadPageContent('auth.html');
+  });
+  adminBtn.addEventListener('click', () => {
+    loadPageContent('admin.html');
+  });
 
-if (await getCookie("clientside_tier") === "1") {
-  adminBtn.style.visibility = "visible";
+  if (await getCookie("clientside_tier") === "1") {
+    adminBtn.style.visibility = "visible";
+  }
 }
-}
-
-
-
 load();
 loadPageContent('home.html');
