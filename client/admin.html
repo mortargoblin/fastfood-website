@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <h1>Admin Products</h1>
+    <form id="create-product-form">
+        <label for="product_name">Product name</label><br>
+        <input type="text" id="product_name" placeholder="Product name" required><br><br>
+        <label for="product_price">Price</label><br>
+        <input type="number" id="product_price" placeholder="Price" min="0" step="0.01"><br><br>
+        <label for="product_description">Description</label><br>
+        <input type="text" id="product_description" placeholder="Description"><br><br>
+        <button type="submit">Create product</button>
+    </form>
+    <p id="admin-message"></p>
+    <hr>
+    <h2>Products</h2>
+    <ul id="product-list"></ul>
+</body>
+</html>
