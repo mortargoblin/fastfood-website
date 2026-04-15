@@ -9,8 +9,8 @@ logger.log(logger.LOGTYPE.INFO, `[db] connecting...`);
     pool = mysql.createPool({
         host: "localhost",
         port : 3306,
-        user: "root",
-        password: "root",
+        user: "fastfood",
+        password: "fastfood",
         database: "fastfood",
         waitForConnections: true,
         connectionLimit: 10,
