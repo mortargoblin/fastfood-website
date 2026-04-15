@@ -41,26 +41,6 @@ async function loadPageContent(content, target = page) {
   }
 }
 
-function updateMenuGrid() {
-  console.log('updateMenuGrid() called');
-
-  const grid = document.querySelector('#menu-grid');
-  if (!grid) return;
-
-  grid.innerHTML = '';
-
-  for (let i = 0; i < 30; i++) {
-    grid.insertAdjacentHTML(
-      'beforeend',
-      `<div class="bg-[#679289] p-4 rounded-xl max-w-60 m-auto">
-        <img src="img/bigmac.avif" class="max-w-50 m-auto" alt="item">
-        <div class="text-white text-center">Item</div>
-        <p class="text-center">description</p>
-      </div>`
-    );
-  }
-}
-
 async function load()
 {
   homeBtn.addEventListener('click', () => {
