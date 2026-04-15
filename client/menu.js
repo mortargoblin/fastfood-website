@@ -1,11 +1,12 @@
 async function fetchMenuItems() {
   try {
-    const response = await fetch('/api/menu/items');
+    const response = await fetch('/api/provider/products');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const items = await response.json();
-    return items;
+    console.log('Fetched menu items:', items);
+    return items.products;
   } catch (error) {
     console.error('Error fetching menu items:', error);
     return [];

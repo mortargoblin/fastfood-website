@@ -31,8 +31,6 @@ async function loadPageContent(content, target = page) {
     const html = await response.text();
     target.innerHTML = html;
 
-    updateMenuGrid();
-
     const event = new CustomEvent('dynamicPageLoad', { detail: { content } });
     document.dispatchEvent(event);
 
@@ -49,6 +47,7 @@ async function load()
 
   menuBtn.addEventListener('click', () => {
     loadPageContent('menu.html');
+    updateMenuItems();
   });
 
   infoBtn.addEventListener('click', () => {
