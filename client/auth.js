@@ -1,11 +1,11 @@
-//add event listener to login form
 
 async function updateStatus(message) {
     const statusElement = document.getElementById('auth-message');
     statusElement.textContent = message;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('dynamicPageLoad', (event) => {
+    console.log('dynamicPageLoad event received with content:', event.detail.content);
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
