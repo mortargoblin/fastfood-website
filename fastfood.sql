@@ -1,15 +1,3 @@
--- =========[MANUAL ADDITIONS]==============
-DROP DATABASE IF EXISTS fastfood;
-CREATE DATABASE fastfood;
-
-DROP USER IF EXISTS 'fastfood'@'localhost';
-CREATE USER 'fastfood'@'localhost' IDENTIFIED BY 'fastfood';
-
-GRANT ALL PRIVILEGES ON fastfood.* TO 'fastfood'@'localhost';
-
-USE fastfood;
--- ========[END OF ADDITIONS]==============
-
 /*
  Navicat Premium Data Transfer
 
@@ -23,11 +11,24 @@ USE fastfood;
  Target Server Version : 110702
  File Encoding         : 65001
 
- Date: 06/04/2026 18:58:46
+ Date: 15/04/2026 18:39:05
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for products
+-- ----------------------------
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci NULL DEFAULT NULL,
+  `price` float NULL DEFAULT NULL,
+  `Age` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_uca1400_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for users
