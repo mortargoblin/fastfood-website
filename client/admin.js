@@ -5,8 +5,32 @@ async function updateAdminStatus(message) {
     }
 }
 
+async function parseResponse(response) {
+    let payload;
+    try {
+        payload = await response.json();
+    } catch {
+        payload = { success: false, message: 'Invalid server response' };
+    }
+
+    if (!response.ok && !payload.message) {
+        payload.message = `Request failed (${response.status})`;
+    }
+
+    return payload;
+}
+
+async function apiRequest(url, options = {}) {
+    try {
+        const response = await fetch(url, options);
+        return await parseResponse(response);
+    } catch {
+        return { success: false, message: 'Network error' };
+    }
+}
+
 function productDisplayName(product) {
-    return product.name ?? product.product_name ?? product.title ?? `#${product.id}`;
+    return product.name ?? `#${product.id}`;
 }
 
 function productDisplayPrice(product) {
@@ -17,8 +41,7 @@ function productDisplayPrice(product) {
 }
 
 async function loadProducts() {
-    const response = await fetch('/api/admin/products');
-    const result = await response.json();
+    const result = await apiRequest('/api/admin/products');
     if (!result.success) {
         updateAdminStatus(result.message || 'Failed to load products');
         return;
@@ -37,10 +60,9 @@ async function loadProducts() {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', async () => {
-            const deleteResponse = await fetch(`/api/admin/products/${product.id}`, {
+            const deleteResult = await apiRequest(`/api/admin/products/${product.id}`, {
                 method: 'DELETE'
             });
-            const deleteResult = await deleteResponse.json();
             updateAdminStatus(deleteResult.message);
             if (deleteResult.success) {
                 await loadProducts();
@@ -66,15 +88,13 @@ document.addEventListener('dynamicPageLoad', (event) => {
             const price = document.getElementById('product_price').value;
             const description = document.getElementById('product_description').value;
 
-            const response = await fetch('/api/admin/products', {
+            const result = await apiRequest('/api/admin/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ name, price, description })
             });
-
-            const result = await response.json();
             updateAdminStatus(result.message);
             if (result.success) {
                 createProductForm.reset();

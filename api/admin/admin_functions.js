@@ -1,10 +1,11 @@
 const db = require('../../connection.js');
+const ADMIN_TIER = 1;
 
 async function _is_admin_session(session_id) {
     if (!session_id) {
         return false;
     }
-    const [result] = await db.query('SELECT id FROM users WHERE session_id = ? AND tier = 1', [session_id]);
+    const [result] = await db.query('SELECT id FROM users WHERE session_id = ? AND tier = ?', [session_id, ADMIN_TIER]);
     return result.length > 0;
 }
 
@@ -13,7 +14,11 @@ async function list_products(session_id) {
         return { success: false, message: 'Unauthorized' };
     }
     const [result] = await db.query('SELECT * FROM products ORDER BY id DESC');
-    return { success: true, products: result };
+    const normalizedProducts = result.map((product) => ({
+        ...product,
+        name: product.name ?? product.product_name ?? product.title ?? null
+    }));
+    return { success: true, products: normalizedProducts };
 }
 
 async function _get_product_columns() {
@@ -52,14 +57,6 @@ async function create_product(session_id, body) {
         if (candidateValues[column] !== null) {
             insertColumns.push(column);
             insertValues.push(candidateValues[column]);
-        }
-    }
-
-    if (insertColumns.length === 0 && writableColumns.length > 0) {
-        const fallbackValue = _pick_value(body, ['name', 'product_name', 'title']);
-        if (fallbackValue !== null) {
-            insertColumns.push(writableColumns[0]);
-            insertValues.push(fallbackValue);
         }
     }
 
