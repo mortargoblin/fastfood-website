@@ -1,4 +1,3 @@
-
 const nav = document.querySelector('nav');
 const homeBtn = document.querySelector('#home');
 const menuBtn = document.querySelector('#menu');
@@ -8,26 +7,35 @@ const infoBtn = document.querySelector('#info');
 
 const page = document.querySelector('#page');
 
-function loadPageContent(content, target=page, callback) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', content, true);
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      target.innerHTML = xhr.responseText;
+async function loadPageContent(content, target = page) {
+  try {
+    const response = await fetch(content);
 
-      if (callback) callback();
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
-  xhr.send();
+
+    const html = await response.text();
+    target.innerHTML = html;
+
+    updateMenuGrid();
+
+  } catch (error) {
+    console.error('Error loading page:', error);
+  }
 }
 
 function updateMenuGrid() {
-  console.log('updateMenuGrid() called')
+  console.log('updateMenuGrid() called');
 
-  const grid = document.querySelector('#menu-grid')
+  const grid = document.querySelector('#menu-grid');
+  if (!grid) return;
+
   grid.innerHTML = '';
+
   for (let i = 0; i < 30; i++) {
-    grid.insertAdjacentHTML('beforeend', 
+    grid.insertAdjacentHTML(
+      'beforeend',
       `<div class="bg-[#679289] p-4 rounded-xl max-w-60 m-auto">
         <img src="img/bigmac.avif" class="max-w-50 m-auto" alt="item">
         <div class="text-white text-center">Item</div>
@@ -35,16 +43,17 @@ function updateMenuGrid() {
     );
   }
 }
+
 homeBtn.addEventListener('click', () => {
-  loadPageContent('home.html', page, updateMenuGrid);
+  loadPageContent('home.html');
 });
 
 menuBtn.addEventListener('click', () => {
-  loadPageContent('menu.html', page, updateMenuGrid);
+  loadPageContent('menu.html');
 });
 
 infoBtn.addEventListener('click', () => {
-  loadPageContent('info.html', page, updateMenuGrid);
+  loadPageContent('info.html');
 });
 
-loadPageContent('home.html', page, updateMenuGrid);
+loadPageContent('home.html');
