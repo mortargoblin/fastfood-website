@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang=en>
+<html lang=en xmlns="http://www.w3.org/1999/html">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
-  <script type="text/javascript" src="menu.js" defer> </script>
-  <script type="text/javascript" src="main.js" defer> </script>
-  <title>Northside Nugetti</title>
-  <script src="/auth.js" defer></script>
-  <script src="/admin.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <script type="text/javascript" src="menu.js" defer></script>
+    <script type="text/javascript" src="main.js" defer></script>
+    <title>Northside Nugetti</title>
+    <script src="/auth.js" defer></script>
+    <script src="/admin.js" defer></script>
 </head>
 
 <!-- Color palette
@@ -19,23 +19,78 @@ Ink     Ocean   Teal    Peach   Red
 -->
 
 <body class="bg-[#f4c095]">
-  <div>
+<div>
     <header>
-      <nav class="flex flex-row bg-[#1D7874] border-b-4 border-[#ee2e31] text-white">
-        <button id="home" class="hover:bg-[#679289] p-3">Koti</button>
-        <button id="menu" class="hover:bg-[#679289] p-3">Ruokalista</button>
-        <button id="restaurants" class="hover:bg-[#679289] p-3">Etsi Ravintola</button>
-        <button id="auth" class="hover:bg-[#679289] p-3">Kirjaudu</button>
-        <button id="info" class="hover:bg-[#679289] p-3">Info</button>
-        <button id="admin" class="hover:bg-[#679289] p-3" style="visibility: hidden;">Admin</button>
-      </nav>
-      <h1></h1>
+        <nav class="flex flex-row bg-[#1D7874] border-b-4 border-[#ee2e31] text-white">
+            <button id="home" class="hover:bg-[#679289] p-3 ">Koti</button>
+            <button id="menu" class="hover:bg-[#679289] p-3">Ruokalista</button>
+            <button id="restaurants" class="hover:bg-[#679289] p-3">Etsi Ravintola</button>
+            <button id="auth" class="hover:bg-[#679289] p-3">Kirjaudu</button>
+            <button id="info" class="hover:bg-[#679289] p-3">Info</button>
+            <button id="admin" class="hover:bg-[#679289] p-3" style="visibility: hidden;">Admin</button>
+        </nav>
     </header>
     <div id="page">
     </div>
-  </div>
-<footer class="relative-size border-t-4 border-[#ee2e31]">
-  <div class="inset-x-0 bottom-0 bg-[#1d7874] text-white">tänne tulee lisää linkkeja jne tai yhteystiedot tai jotain</div>
+</div>
+<!--
+FOOTER STARTING FROM HERE
+ -->
+<footer class="bg-[#1D7874] relative-size border-t-4 border-[#ee2e31]">
+    <div class="max-w-300 mx-auto">
+        <div class="grid md:grid-cols-3 py-5">
+            <div class="py-8 px-4">
+                <h1 class="flex items-center gap-3 text-xl sm:text-3xl font-bold text-justify sm:text-left">
+                    <!-- ADD LOGO HERE --->
+                    <img width="40px" src="img/logoplacehold.svg" alt="PLAceholder logo"/>
+                    COMPANY NAME
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur debitis dolorum ea, error in
+                    ipsa iste labore molestias nam possimus praesentium quidem reiciendis rerum sit ullam ut velit
+                    veniam voluptates?
+                </p>
+                <br/>
+                <div class="flex items-center, gap-3 mt-3">
+                    <img src="" alt="Location">
+                    <p>Locations</p>
+                </div>
+                <div class="flex items-center, gap-3 mt-3">
+                    <img src="" alt="Phone">
+                    <p>Number</p>
+                </div>
+                <!----- Social links here
+                -->
+                <div>
+                    <div>
+                        <a href="#">
+                            <img src="" alt="insta">
+                        </a>
+                        <a href="#">
+                            <img src="" alt="face">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--- The links to different pages jne
+            --->
+            <div class="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10">
+                <div>
+                    <div class="py-8 px-4">
+                        <h1 class="text-2xl font-bold text-justify mb-3 sm:text-left ">
+                            Linkit
+                        </h1>
+                        <ul class="gap-3 flex-col">
+                            <li>Koti</li>
+                            <li>Ruokalista</li>
+                            <li>Etsi ravintola</li>
+                            <li>Kirjaudu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 </body>
 
