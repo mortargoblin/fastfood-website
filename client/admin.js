@@ -87,13 +87,14 @@ document.addEventListener('dynamicPageLoad', (event) => {
             const name = document.getElementById('product_name').value;
             const price = document.getElementById('product_price').value;
             const description = document.getElementById('product_description').value;
+            const imageUrl = document.getElementById('product_image_url').value;
 
             const result = await apiRequest('/api/admin/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, price, description })
+                body: JSON.stringify({ name, price, description, image_url: imageUrl })
             });
             updateAdminStatus(result.message);
             if (result.success) {
