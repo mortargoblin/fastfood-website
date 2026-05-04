@@ -59,10 +59,37 @@ async function load()
   adminBtn.addEventListener('click', () => {
     loadPageContent('admin.html');
   });
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = {
+        id: btn.dataset.id,
+        name: btn.dataset.name,
+        price: Number(btn.dataset.price)
+      };
+      console.log(btn.dataset);
+      console.log(item);
+
+      addToCart(item);
+      renderCart();
+    })
+  });
 
   if (await getCookie("clientside_tier") === "1") {
     adminBtn.style.visibility = "visible";
   }
 }
+
+function renderCart() {
+  const cartEl = document.getElementById("cart-container");
+  cartEl.innerHTML = "";
+
+  // accessing global variable "cart" astaghfirullah 🛐
+  cart.forEach(item => {
+    const div = document.createElement("div");
+    div.textContent = `${item.name} x${item.quantity}`;
+    cartEl.appendChild(div);
+  });
+}
+
 load();
 loadPageContent('home.html');

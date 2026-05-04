@@ -30,7 +30,11 @@ async function updateMenuItems() {
         <div class="text-white text-center">${items[i].name}</div>
         <p class="text-center">${items[i].description}</p>
         <div class="text-center font-bold">${items[i].price}€</div>
+        <button class="add-to-cart"}
+        data-id=${items[i].id} data-name=${items[i].name} data-price=${items[i].price}
+        >Add to cart</button>
       </div>`
     );
   }
+  load();
 }
