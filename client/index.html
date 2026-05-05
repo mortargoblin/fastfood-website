@@ -29,6 +29,7 @@ Ink     Ocean   Teal    Peach   Red
             <button id="restaurants" class="hover:bg-[#679289] p-3">Etsi Ravintola</button>
             <button id="auth" class="hover:bg-[#679289] p-3">Kirjaudu</button>
             <button id="info" class="hover:bg-[#679289] p-3">Info</button>
+            <button id="cart-btn" class="hover:bg-[#679289] p-3">Cart</button>
             <button id="admin" class="hover:bg-[#679289] p-3" style="visibility: hidden;">Admin</button>
         </nav>
     </header>
@@ -123,6 +124,13 @@ FOOTER STARTING FROM HERE
         </div>
     </div>
 </footer>
+<!-- CART DIALOG -->
+<dialog id="cart-dialog">
+  <h2>Your Order</h2>
+  <div id="cart-items"></div>
+  <p id="cart-total"></p>
+  <button id="close-cart">Close</button>
+</dialog>
 </body>
 
 </html>

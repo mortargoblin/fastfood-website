@@ -80,7 +80,7 @@ async function load()
 }
 
 function renderCart() {
-  const cartEl = document.getElementById("cart-container");
+  const cartEl = document.getElementById("cart-dialog");
   cartEl.innerHTML = "";
 
   // accessing global variable "cart" astaghfirullah 🛐
@@ -89,6 +89,39 @@ function renderCart() {
     div.textContent = `${item.name} x${item.quantity}`;
     cartEl.appendChild(div);
   });
+}
+
+// cart dialog 
+const cartBtn = document.getElementById("cart-btn");
+const dialog = document.getElementById("cart-dialog");
+const closeBtn = document.getElementById("close-cart");
+
+cartBtn.addEventListener("click", () => {
+  renderCart();
+  dialog.showModal();
+});
+
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
+
+function renderCart() {
+  const itemsEl = document.getElementById("cart-items");
+  const totalEl = document.getElementById("cart-total");
+
+  itemsEl.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach(item => {
+    const div = document.createElement("div");
+    div.textContent = `${item.name} x${item.quantity} - €${(item.price * item.quantity).toFixed(2)}`;
+    itemsEl.appendChild(div);
+
+    total += item.price * item.quantity;
+  });
+
+  totalEl.textContent = `Total: €${total.toFixed(2)}`;
 }
 
 load();
