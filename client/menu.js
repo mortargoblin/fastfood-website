@@ -25,14 +25,14 @@ async function updateMenuItems() {
   for (let i = 0; i < items.length; i++) {
     grid.insertAdjacentHTML(
       'beforeend',
-      `<div class="bg-[#679289] p-4 rounded-xl max-w-60 m-auto">
+      `<div class="bg-[#679289] p-4 rounded-xl max-w-60 m-auto text-center">
         <img src="${items[i].image_url}" class="max-w-50 m-auto" alt="item">
-        <div class="text-white text-center">${items[i].name}</div>
+        <div class="text-white text-center text-2xl font-bold">${items[i].name.toUpperCase()}</div>
         <p class="text-center">${items[i].description}</p>
         <div class="text-center font-bold">${items[i].price}€</div>
-        <button class="add-to-cart"}
+        <button class="add-to-cart cursor-pointer"}
         data-id=${items[i].id} data-name=${items[i].name} data-price=${items[i].price}
-        >Add to cart</button>
+        >Lisää ostoskoriin</button>
       </div>`
     );
   }
