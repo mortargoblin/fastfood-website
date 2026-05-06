@@ -73,6 +73,7 @@ async function load()
       renderCart();
     })
   });
+  loadCart();
 
   if (await getCookie("clientside_tier") === "1") {
     adminBtn.style.visibility = "visible";
@@ -109,19 +110,32 @@ function renderCart() {
   const itemsEl = document.getElementById("cart-items");
   const totalEl = document.getElementById("cart-total");
 
-  itemsEl.innerHTML = "";
+  itemsEl.innerHTML = '';
 
   let total = 0;
 
+  console.log('cart from renderer', cart);
   cart.forEach(item => {
-    const div = document.createElement("div");
-    div.textContent = `${item.name} x${item.quantity} - €${(item.price * item.quantity).toFixed(2)}`;
-    itemsEl.appendChild(div);
+    const tr = document.createElement('tr');
+    tr.classList.add('text-center');
+    
+    tr.innerHTML = `
+      <td>${item.name}</td>
 
+      <td class="qty-controls">
+        <button data-id="${item.id}" data-action="decrease">−</button>
+        <span>${item.quantity}</span>
+        <button data-id="${item.id}" data-action="increase">+</button>
+      </td>
+
+      <td>€${(item.price * item.quantity).toFixed(2)}</td>
+    `;
+
+    itemsEl.appendChild(tr);
     total += item.price * item.quantity;
   });
 
-  totalEl.textContent = `Total: €${total.toFixed(2)}`;
+  totalEl.textContent = `Total: ${total.toFixed(2)}€`;
 }
 
 load();

@@ -126,15 +126,17 @@ FOOTER STARTING FROM HERE
         </div>
     </div>
 </footer>
+
 <!-- CART DIALOG -->
 <dialog class="m-auto gap-3 p-8 bg-[#f4c095] border-4 rounded-lg border-[#ee2e31]" id="cart-dialog">
-  <h2 class="font-bold underline text-center">Ostoskori</h2>
+    <h2 class="font-bold underline text-center">Ostoskori</h2>
     <br>
-  <div id="cart-items"></div>
-  <p id="cart-total"></p>
+    <table id="cart-items" class="min-w-60"></table>
+    <p id="cart-total" class="text-center"></p>
     <br>
-  <button class="cursor-pointer border-[#ee2e31] rounded-full py-3 px-6 border-2" id="close-cart">Sulje</button>
+    <button class="cursor-pointer border-[#ee2e31] rounded-full py-3 px-6 border-2" id="close-cart">Sulje</button>
 </dialog>
+
 </body>
 
 </html>

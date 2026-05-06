@@ -21,7 +21,9 @@ function saveCart() {
 
 function loadCart() {
   const data = JSON.parse(localStorage.getItem('cart')) || [];
+  console.log('cart data from localstorage', data);
   cart.length = 0;
-  cart.push(data);
+  cart.push(...data);
+  console.log('cart loaded', cart);
 }
 
