@@ -88,8 +88,47 @@ async function delete_product(session_id, id) {
     return { success: true, message: 'Product deleted successfully' };
 }
 
+async function update_product(session_id, id, body) {
+    if (!await _is_admin_session(session_id)) {
+        return { success: false, message: 'Unauthorized' };
+    }
+    if (!id) {
+        return { success: false, message: 'Product id is required' };
+    }
+    const columns = await _get_product_columns();
+    const writableColumns = columns.filter((column) => !column.Extra.includes('auto_increment')).map((column) => column.Field);
+    const candidateValues = {
+        name: _pick_value(body, ['name', 'product_name', 'title']),
+        price: _pick_value(body, ['price', 'product_price']),
+        description: _pick_value(body, ['description', 'product_description']),
+        image_url: _pick_value(body, ['image_url', 'image', 'product_image'])
+    };
+    const updateColumns = [];
+    const updateValues = [];
+    for (const column of writableColumns) {
+        if (candidateValues[column] !== null) {
+            updateColumns.push(`${column} = ?`);
+            updateValues.push(candidateValues[column]);
+        }
+    }
+    if (updateColumns.length === 0) {
+        return { success: false, message: 'No valid product fields provided for update' };
+    }
+    updateValues.push(id);
+    const [result] = await db.query(
+        `UPDATE products SET ${updateColumns.join(', ')} WHERE id = ?`, 
+        updateValues
+    );
+    if (result.affectedRows === 0) {
+        return { success: false, message: 'Product not found or no changes made' };
+    }
+    return { success: true, message: 'Product updated successfully'};
+}
+
 module.exports = {
     list_products,
     create_product,
-    delete_product
+    delete_product,
+    update_product
 };
+

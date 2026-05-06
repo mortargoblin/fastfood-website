@@ -69,6 +69,45 @@ async function loadProducts() {
             }
         });
 
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', () => {
+            const newName = prompt('Enter new name, leave blank to keep current:', product.name);
+            const newPrice = prompt('Enter new price, leave blank to keep current:', product.price);
+            const newDescription = prompt('Enter new description, leave blank to keep current:', product.description);
+            const newImageUrl = prompt('Enter new image URL, leave blank to keep current:', product.image_url);
+
+            const updateData = {};
+            if (newName !== null && newName.trim() !== '') {
+                updateData.name = newName.trim();
+            }
+            if (newPrice !== null && newPrice.trim() !== '') {
+                updateData.price = newPrice.trim();
+            }
+            if (newDescription !== null && newDescription.trim() !== '') {
+                updateData.description = newDescription.trim();
+            }
+            if (newImageUrl !== null && newImageUrl.trim() !== '') {
+                updateData.image_url = newImageUrl.trim();
+            }
+
+            apiRequest(`/api/admin/products/${product.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'                },
+                body: JSON.stringify(updateData)
+            }).then(updateResult => {
+                updateAdminStatus(updateResult.message);
+                if (updateResult.success) {
+                    loadProducts();
+                }
+            });
+        });
+
+
+
+        item.appendChild(editButton);
+        item.appendChild(document.createTextNode(' | '));
         item.appendChild(deleteButton);
         productList.appendChild(item);
     }

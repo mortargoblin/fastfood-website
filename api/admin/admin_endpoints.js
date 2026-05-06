@@ -47,4 +47,10 @@ router.delete('/products/:id', async (req, res) => {
     res.json(result);
 });
 
+router.put('/products/:id', async (req, res) => {
+    const session_id = req.cookies.session_id;
+    const result = await admin_functions.update_product(session_id, req.params.id, req.body);
+    res.json(result);
+});
+
 module.exports = router;
