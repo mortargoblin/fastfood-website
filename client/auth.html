@@ -1,33 +1,143 @@
-<!--Write a basic auth frontend, 2 input fields for username and password, with a hr between them-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>auth</title>
+    <title>Kirjautuminen</title>
+    <style>
+
+        .auth-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        .toggle-row {
+            display: flex;
+            background: #eef2f1;
+            border-radius: 999px;
+            padding: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: #679289;
+            color: white;
+        }
+
+        .form-panel {
+            display: none;
+        }
+
+        .form-panel.active {
+            display: block;
+        }
+
+        .field input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.65rem 0.9rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .field input:focus {
+            border-color: #679289;
+        }
+
+        .field {
+            margin-bottom: 0.5rem;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 0.5rem 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 999px;
+            background: #679289;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #1D7874;
+        }
+
+
+        #auth-message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+            min-height: 1.2em;
+        }
+    </style>
 </head>
 <body>
-<div class="grid grid-cols">
-    <div class="px-8 py-8 text-center col-start-1 col-end-3">
-    <h1 class="text-2xl font-bold">Kirjaudu sisään</h1>
-    <form class="text-center px-8 py-4" id="login-form">
-        <input class="text-center" type="text" id="login_username" placeholder="Username" required><br><hr>
-        <input class="text-center" type="password" id="login_password" placeholder="Password" required><br><hr>
-        <button class="cursor-pointer p-4 mt-4 rounded-full bg-[#679289] hover:bg-[#1D7874]" type="submit">Kirjaudu</button>
-    </form>
+
+<div class="auth-card">
+    <div class="toggle-row">
+        <button class="toggle-btn active" data-target="login">Kirjaudu sisään</button>
+        <button class="toggle-btn" data-target="register">Luo tili</button>
     </div>
-    <div class="px-8 py-8 text-center col-span-1">
-        <h1 class="text-2xl font-bold">Luo tili</h1>
-        <form class="text-center px-8 py-4" id="register-form">
-            <input class="text-center" type="text" id="register_username" placeholder="Username" required><br><hr>
-            <input class="text-center" type="password" id="register_password" placeholder="Password" required><br><hr>
-            <button class="cursor-pointer p-4 mt-4 rounded-full bg-[#679289] hover:bg-[#1D7874]" type="submit">Lähetä</button>
+
+    <div class="form-panel active" id="panel-login">
+        <form id="login-form">
+            <div class="field">
+                <input type="text" id="login_username" placeholder="Käyttäjänimi" required>
+            </div>
+            <hr class="divider">
+            <div class="field">
+                <input type="password" id="login_password" placeholder="Salasana" required>
+            </div>
+            <button class="submit-btn" type="submit">Kirjaudu</button>
         </form>
     </div>
-    <br>
-    <img class="max-w-80 m-auto col-span-2 col-end-7" src="img/NNiso.png" alt="burger">
-    <br>
+
+    <div class="form-panel" id="panel-register">
+        <form id="register-form">
+            <div class="field">
+                <input type="text" id="register_username" placeholder="Käyttäjänimi" required>
+            </div>
+            <hr class="divider">
+            <div class="field">
+                <input type="password" id="register_password" placeholder="Salasana" required>
+            </div>
+            <button class="submit-btn" type="submit">Luo tili</button>
+        </form>
+    </div>
+
     <p id="auth-message"></p>
 </div>
+
+
+<script src="auth.js"></script>
 </body>
 </html>

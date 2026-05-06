@@ -1,4 +1,3 @@
-
 async function updateStatus(message) {
     const statusElement = document.getElementById('auth-message');
     statusElement.textContent = message;
@@ -6,6 +5,16 @@ async function updateStatus(message) {
 
 document.addEventListener('dynamicPageLoad', (event) => {
     console.log('dynamicPageLoad event received with content:', event.detail.content);
+
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            console.log('Toggling to', btn.dataset.target);
+            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('panel-' + btn.dataset.target).classList.add('active');
+        });
+    });
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
