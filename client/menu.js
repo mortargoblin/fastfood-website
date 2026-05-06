@@ -31,7 +31,7 @@ async function updateMenuItems() {
         <p class="text-center">${items[i].description}</p>
         <div class="text-center font-bold">${items[i].price}€</div>
         <button  class="add-to-cart cursor-pointer hover:font-bold"
-        data-id=${items[i].id} data-name=${items[i].name} data-price=${items[i].price}
+        data-id=${items[i].id} data-name='${items[i].name}' data-price=${items[i].price}
         >Lisää ostoskoriin</button>
       </div>`
     );
