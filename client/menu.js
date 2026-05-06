@@ -36,5 +36,4 @@ async function updateMenuItems() {
       </div>`
     );
   }
-  load();
 }
