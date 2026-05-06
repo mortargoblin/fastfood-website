@@ -35,8 +35,8 @@ function _pick_value(body, keys) {
     return null;
 }
 
-async function create_product(session_id, body) {
-    if (!await _is_admin_session(session_id)) {
+async function create_product(session_id, body, bypass_session = false) {
+    if (!await _is_admin_session(session_id) && !bypass_session) {
         return { success: false, message: 'Unauthorized' };
     }
 
@@ -125,10 +125,84 @@ async function update_product(session_id, id, body) {
     return { success: true, message: 'Product updated successfully'};
 }
 
+async function create_demo_products() {
+
+    //If the products length is zero, return.
+    const [existingProducts] = await db.query('SELECT id FROM products LIMIT 1');
+    if (existingProducts.length > 0) {
+        return 1;
+    }
+    console.log('Creating demo products...');
+
+    const demoProducts = [
+        {
+            name: 'Lame Burger',
+            price: 5.99,
+            description: 'A very lame burger with no taste.',
+            image_url: '/img/NNbaagaa.png'
+        },
+        {
+            name: 'Mediocre Fries',
+            price: 2.99,
+            description: 'Fries that are just okay, nothing special.',
+            image_url: '/img/NNfries.png'
+        },
+        {
+            name: 'Bland Chicken Burger',
+            price: 4.99,
+            description: 'A bland chicken burger that tastes like nothing.',
+            image_url: '/img/NNchickenbaaga.png'
+        },
+        {
+            name: 'Nuggets of Doom and Despair',
+            price: 3.99,
+            description: 'Chicken nuggets that will make you question your life choices.',
+            image_url: '/img/NNnugs.png'
+        },
+        {
+            name: 'Big Burger for Big Sadness',
+            price: 13.99,
+            description: 'A sad burger that tastes like disappointment.',
+            image_url: '/img/NNiso.png'
+        },
+        {
+            name: 'Small Burger of Existential Dread',
+            price: 2.99,
+            description: 'A tiny burger that encapsulates the feeling of existential dread.',
+            image_url: '/img/NNpieni.png'
+        },
+        {
+            name: 'Sad Soda',
+            price: 1.99,
+            description: 'A sad soda for sad people.',
+            image_url: '/img/NNdrink.png'
+        },
+        {
+            name: "Milkshake of Misery",
+            price: 4.99,
+            description: "A milkshake that is as miserable as it sounds.",
+            image_url: "/img/NNcmilks.png"
+        },
+            {
+            name: "Pink Milkshake from the Cows of Despair",
+            price: 5.49,
+            description: "This one is not even so bad",
+            image_url: "/img/NNsmilks.png"
+        }
+    ];
+
+    for (const product of demoProducts) {
+        await create_product(null, product, true);
+    }
+
+    return 0;
+}
+
 module.exports = {
     list_products,
     create_product,
     delete_product,
-    update_product
+    update_product,
+    create_demo_products
 };
 

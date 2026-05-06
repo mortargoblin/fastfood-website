@@ -9,6 +9,8 @@ const user_endpoints = require('./api/user/user_endpoints.js');
 const admin_endpoints = require('./api/admin/admin_endpoints.js');
 const provider_endpoints = require('./api/provider/provider_endpoints.js');
 
+const admin_functions = require('./api/admin/admin_functions.js');
+
 const PORT = 3000;
 //bodyparser
 const bodyParser = require('body-parser');
@@ -22,6 +24,10 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/api/user', user_endpoints);
 app.use('/api/admin', admin_endpoints);
 app.use('/api/provider', provider_endpoints);
+
+if (admin_functions.create_demo_products() === 0) {
+    logger.log(logger.LOGTYPE.INFO, 'Demo products created');
+}
 
 app.listen(PORT, () => {
     logger.log(logger.LOGTYPE.INFO, `Server running on port ${PORT}`);
