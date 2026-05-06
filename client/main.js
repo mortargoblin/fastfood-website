@@ -75,8 +75,6 @@ async function load()
 
       Toastify({
   text: "Added " + item.name + " to cart",
-  duration: 3000,
-  close: true,
   gravity: "bottom", // `top` or `bottom`
   position: "center", // `left`, `center` or `right`
   style: {
@@ -92,7 +90,7 @@ async function load()
   loadCart();
 
   if (await getCookie("clientside_tier") === "1") {
-    adminBtn.style.visibility = "visible";
+    adminBtn.style.visibility = "visible"; //This is clientside only, all validation is still done on the server.
   }
 }
 
@@ -139,9 +137,9 @@ function renderCart() {
       <td>${item.name}</td>
 
       <td class="qty-controls">
-        <button data-id="${item.id}" data-action="decrease">−</button>
+        <button data-id="${item.id}" onclick="removeItemFromCart(this.dataset.id)" data-action="decrease">−</button>
         <span>${item.quantity}</span>
-        <button data-id="${item.id}" data-action="increase">+</button>
+        <button data-id="${item.id}" onclick="addAnotherItemToCart(this.dataset.id)" data-action="increase">+</button>
       </td>
 
       <td>€${(item.price * item.quantity).toFixed(2)}</td>
@@ -152,6 +150,27 @@ function renderCart() {
   });
 
   totalEl.textContent = `Total: ${total.toFixed(2)}€`;
+}
+
+function addAnotherItemToCart(itemId) {
+  const item = cart.find(i => i.id === itemId);
+  if (item) {
+    item.quantity += 1;
+    saveCart();
+    renderCart();
+  }
+}
+
+function removeItemFromCart(itemId) {
+  const itemIndex = cart.findIndex(i => i.id === itemId);
+  if (itemIndex > -1) {
+    cart[itemIndex].quantity -= 1;
+    if (cart[itemIndex].quantity <= 0) {
+      cart.splice(itemIndex, 1);
+    }
+    saveCart();
+    renderCart();
+  }
 }
 
 load();
