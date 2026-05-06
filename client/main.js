@@ -39,14 +39,18 @@ async function loadPageContent(content, target = page) {
   }
 }
 
+let _GLOBAL_MENU_ALREADY_SETUP = false;
 async function load()
 {
+  if (_GLOBAL_MENU_ALREADY_SETUP) return;
+  _GLOBAL_MENU_ALREADY_SETUP = true;
   homeBtn.addEventListener('click', () => {
     loadPageContent('home.html');
   });
 
   menuBtn.addEventListener('click', () => {
     loadPageContent('menu.html');
+    console.log('Menu button clicked, loading menu.html');
     updateMenuItems();
   });
 
