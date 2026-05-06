@@ -22,14 +22,16 @@ Ink     Ocean   Teal    Peach   Red
 <body class="bg-[#f4c095]">
 <div>
     <header>
-        <nav class="flex flex-row bg-[#1D7874] border-b-4 border-[#ee2e31] text-white">
+        <nav class="flex flex-row relative bg-[#1D7874] border-b-4 border-[#ee2e31] text-white">
             <img class="max-w-30" src="img/NNpieni.png" alt="logo">
             <button id="home" class="hover:bg-[#679289] p-3 ">Koti</button>
             <button id="menu" class="hover:bg-[#679289] p-3">Ruokalista</button>
             <button id="restaurants" class="hover:bg-[#679289] p-3">Etsi Ravintola</button>
             <button id="auth" class="hover:bg-[#679289] p-3">Kirjaudu</button>
             <button id="info" class="hover:bg-[#679289] p-3">Info</button>
-            <button id="cart-btn" class="hover:bg-[#679289] p-3">Ostoskori</button>
+            <button id="cart-btn" class="hover:bg-[#679289] p-3 absolute right-0 bottom-1/2">
+                <img class="max-w-8" src="img/cart.png">
+            </button>
             <button id="admin" class="hover:bg-[#679289] p-3" style="visibility: hidden;">Admin</button>
         </nav>
     </header>
@@ -125,11 +127,13 @@ FOOTER STARTING FROM HERE
     </div>
 </footer>
 <!-- CART DIALOG -->
-<dialog class="m-auto gap-3 py-8 px-4 bg-[#f4c095] border-4 rounded-lg border-[#ee2e31]" id="cart-dialog">
-  <h2 class="font-bold">Ostoskori</h2>
+<dialog class="m-auto gap-3 p-8 bg-[#f4c095] border-4 rounded-lg border-[#ee2e31]" id="cart-dialog">
+  <h2 class="font-bold underline text-center">Ostoskori</h2>
+    <br>
   <div id="cart-items"></div>
   <p id="cart-total"></p>
-  <button class="cursor-pointer" id="close-cart">Sulje</button>
+    <br>
+  <button class="cursor-pointer border-[#ee2e31] rounded-full py-3 px-6 border-2" id="close-cart">Sulje</button>
 </dialog>
 </body>
 
