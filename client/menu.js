@@ -37,3 +37,38 @@ async function updateMenuItems() {
     );
   }
 }
+
+document.addEventListener('dynamicPageLoad', (event) => {
+  if (event.detail.content === 'menu.html') {
+    console.log('Menu page loaded, updating menu items');
+    updateMenuItems().then(() => {
+      document.querySelectorAll('.add-to-cart').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const item = {
+            id: btn.dataset.id,
+            name: btn.dataset.name,
+            price: Number(btn.dataset.price)
+          };
+
+          console.log(btn.dataset);
+          console.log(item);
+
+          Toastify({
+            text: 'Added ' + item.name + ' to cart',
+            gravity: 'bottom',
+            position: 'center',
+            style: {
+              background: 'linear-gradient(to right, #00b09b, #96c93d)',
+            },
+            onClick: function() {}
+          }).showToast();
+
+          addToCart(item);
+          renderCart();
+        });
+      });
+    });
+
+    loadCart();
+  }
+});

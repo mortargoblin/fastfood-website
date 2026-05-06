@@ -63,32 +63,6 @@ async function load()
   adminBtn.addEventListener('click', () => {
     loadPageContent('admin.html');
   });
-  document.querySelectorAll(".add-to-cart").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const item = {
-        id: btn.dataset.id,
-        name: btn.dataset.name,
-        price: Number(btn.dataset.price)
-      };
-      console.log(btn.dataset);
-      console.log(item);
-
-      Toastify({
-  text: "Added " + item.name + " to cart",
-  gravity: "bottom", // `top` or `bottom`
-  position: "center", // `left`, `center` or `right`
-  style: {
-    background: "linear-gradient(to right, #00b09b, #96c93d)",
-  },
-  onClick: function(){} // Callback after click
-}).showToast();
-
-      addToCart(item);
-      renderCart();
-    })
-  });
-  loadCart();
-
   if (await getCookie("clientside_tier") === "1") {
     adminBtn.style.visibility = "visible"; //This is clientside only, all validation is still done on the server.
   }
