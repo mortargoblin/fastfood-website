@@ -30,6 +30,10 @@ document.addEventListener('dynamicPageLoad', (event) => {
             });
             const result = await response.json();
             updateStatus(result.message);
+            if (result.success) {
+                updateAuthNav();
+                setTimeout(() => loadPageContent('home.html'), 800);
+            }
         });
     };
     const registerForm = document.getElementById('register-form');

@@ -71,7 +71,8 @@ async function login(username, password) {
         success: true,
         message: "Login successful",
         session_id: session_id,
-        tier: user.tier
+        tier: user.tier,
+        username: username
     };
 }
 

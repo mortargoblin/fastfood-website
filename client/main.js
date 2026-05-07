@@ -58,14 +58,31 @@ async function load()
     loadPageContent('ravintolat.html');
   });
 
-  authBtn.addEventListener('click', () => {
-    loadPageContent('auth.html');
+  authBtn.addEventListener('click', async () => {
+    const username = await getCookie("clientside_username");
+    if (username) {
+      await fetch('/api/user/logout', { method: 'POST' });
+      updateAuthNav();
+      loadPageContent('home.html');
+    } else {
+      loadPageContent('auth.html');
+    }
   });
   adminBtn.addEventListener('click', () => {
     loadPageContent('admin.html');
   });
   if (await getCookie("clientside_tier") === "1") {
-    adminBtn.style.visibility = "visible"; //This is clientside only, all validation is still done on the server.
+    adminBtn.style.visibility = "visible";
+  }
+  updateAuthNav();
+}
+
+async function updateAuthNav() {
+  const username = await getCookie("clientside_username");
+  if (username) {
+    authBtn.innerHTML = `<span class="flex items-center gap-1">👤 <span class="max-w-24 truncate">${username}</span> <span class="text-xs opacity-70 font-normal">(kirjaudu ulos)</span></span>`;
+  } else {
+    authBtn.textContent = 'Kirjaudu';
   }
 }
 
