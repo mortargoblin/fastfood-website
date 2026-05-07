@@ -28,13 +28,14 @@ router.post('/logout', (req, res) => {
 
 router.post('/create_order', async (req, res) => {
 
-    const { username, cart } = req.body;
+    const session_id = req.cookies.session_id;
+    console.log('endpoint session id', session_id);
+    const { cart } = req.body;
     
     const result = await user_functions.create_order(
-        username,
+        session_id,
         cart
     );
-    console.log(result);
 
     res.json(result);
 });

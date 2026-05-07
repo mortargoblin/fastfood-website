@@ -145,12 +145,12 @@ function renderCart() {
 
 async function checkout() {
   const loggedInCookie = await getCookie('logged_in');
-  console.log(loggedInCookie);
+
   if (!loggedInCookie) {
     document.querySelector('#cart-total')
       .textContent = 'Sinun tulee olla kirjautuneena sisään tilausta varten';
   } else {
-    const result = await fetch('api/user/create_order', {
+    const response = await fetch('api/user/create_order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -159,9 +159,22 @@ async function checkout() {
         cart
       })
     });
-    console.log(result);
+
+    const result = await response.json();
+    console.log('CHECKOUT RESULT', result);
+
     emptyCart();
-    dialog.close;
+    dialog.close();
+
+    Toastify({
+      text: 'Order succesful',
+      gravity: 'bottom',
+      position: 'center',
+      style: {
+        background: 'linear-gradient(to right, #00b09b, #96c93d)',
+      },
+      onClick: function() {}
+    }).showToast();
   }
 }
 

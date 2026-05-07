@@ -77,10 +77,9 @@ async function login(username, password) {
 }
 
 async function create_order(session_id, cart) {
-    // DEFINE USERNAME HERE
-    console.log('CREATE_ORDER CALLED');
 
     const user = await _get_user_by_session(session_id);
+
     if (!user) {
         return { success: false, message: "Invalid session" };
     }
@@ -98,7 +97,7 @@ async function create_order(session_id, cart) {
         const cart_string = JSON.stringify(cart);
 
         const result = await db.query(
-            'INSERT INTO orders (username, cart_data) VALUES (?, ?)',
+            'INSERT INTO orders (uname, cart_data) VALUES (?, ?)',
             [username, cart_string]
         );
 
