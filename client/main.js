@@ -1,5 +1,3 @@
-import Swiper from 'swiper';
-
 const nav = document.querySelector('nav');
 const homeBtn = document.querySelector('#home');
 const menuBtn = document.querySelector('#menu');
