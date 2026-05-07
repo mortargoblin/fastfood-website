@@ -88,13 +88,19 @@ function renderCart() {
 const cartBtn = document.getElementById("cart-btn");
 const dialog = document.getElementById("cart-dialog");
 const closeBtn = document.getElementById("close-cart");
+const checkoutBtn = document.getElementById("checkout-btn");
 
-cartBtn.addEventListener("click", () => {
+cartBtn.addEventListener('click', () => {
   renderCart();
   dialog.showModal();
 });
 
-closeBtn.addEventListener("click", () => {
+closeBtn.addEventListener('click', () => {
+  dialog.close();
+});
+
+checkoutBtn.addEventListener('click', () => {
+  loadPageContent('checkout.html');
   dialog.close();
 });
 
@@ -115,9 +121,13 @@ function renderCart() {
       <td>${item.name}</td>
 
       <td class="qty-controls">
-        <button data-id="${item.id}" onclick="removeItemFromCart(this.dataset.id)" data-action="decrease">−</button>
+        <button data-id="${item.id}" 
+        onclick="removeItemFromCart(this.dataset.id)" 
+        data-action="decrease" class="px-2">−</button>
         <span>${item.quantity}</span>
-        <button data-id="${item.id}" onclick="addAnotherItemToCart(this.dataset.id)" data-action="increase">+</button>
+        <button data-id="${item.id}" 
+        onclick="addAnotherItemToCart(this.dataset.id)" 
+        data-action="increase" class="px-2">+</button>
       </td>
 
       <td>€${(item.price * item.quantity).toFixed(2)}</td>
@@ -128,27 +138,6 @@ function renderCart() {
   });
 
   totalEl.textContent = `Total: ${total.toFixed(2)}€`;
-}
-
-function addAnotherItemToCart(itemId) {
-  const item = cart.find(i => i.id === itemId);
-  if (item) {
-    item.quantity += 1;
-    saveCart();
-    renderCart();
-  }
-}
-
-function removeItemFromCart(itemId) {
-  const itemIndex = cart.findIndex(i => i.id === itemId);
-  if (itemIndex > -1) {
-    cart[itemIndex].quantity -= 1;
-    if (cart[itemIndex].quantity <= 0) {
-      cart.splice(itemIndex, 1);
-    }
-    saveCart();
-    renderCart();
-  }
 }
 
 function openMap(query) {

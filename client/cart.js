@@ -27,3 +27,27 @@ function loadCart() {
   console.log('cart loaded', cart);
 }
 
+function emptyCart() {
+  localStorage.removeItem('cart');
+}
+
+function addAnotherItemToCart(itemId) {
+  const item = cart.find(i => i.id === itemId);
+  if (item) {
+    item.quantity += 1;
+    saveCart();
+    renderCart();
+  }
+}
+
+function removeItemFromCart(itemId) {
+  const itemIndex = cart.findIndex(i => i.id === itemId);
+  if (itemIndex > -1) {
+    cart[itemIndex].quantity -= 1;
+    if (cart[itemIndex].quantity <= 0) {
+      cart.splice(itemIndex, 1);
+    }
+    saveCart();
+    renderCart();
+  }
+}
