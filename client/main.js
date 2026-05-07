@@ -169,38 +169,24 @@ document.getElementById('map-modal').addEventListener('click', (e) => {
   }
 });
 
-let testimonialSwiper = null;
-function initializeTestimonialSwiper() {
-  const swiperElement = document.querySelector('.testimonial__swiper');
-  if (!swiperElement) return;
+const swiper = new Swiper('.testimonial__swiper', {
+  direction: 'vertical',
+  loop: true,
+  slidesPerView: 'auto',
+  centeredSlides: 'auto',
+  spaceBetween: 16,
+  grabCursor: true,
+  speed: 600,
 
-  if (testimonialSwiper) {
-    testimonialSwiper.destroy(true, true);
-  }
+  pagination: {
+    el: '.swiper-pagination',
 
-  testimonialSwiper = new Swiper('.testimonial__swiper', {
-    direction: 'vertical',
-    loop: true,
-    slidesPerView: 'auto',
-    centeredSlides: 'auto',
-    spaceBetween: 16,
-    grabCursor: true,
-    speed: 600,
-    pagination: {
-      el: '.swiper-pagination'
-    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     }
-  });
-}
-
-document.addEventListener('dynamicPageLoad', (event) => {
-  if (event.detail.content === 'home.html') {
-    initializeTestimonialSwiper();
   }
-});
+})
 
 load();
 loadPageContent('home.html');
