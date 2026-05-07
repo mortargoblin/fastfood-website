@@ -169,24 +169,38 @@ document.getElementById('map-modal').addEventListener('click', (e) => {
   }
 });
 
-const swiper = new Swiper('.testimonial__swiper', {
-  direction: 'vertical',
-  loop: true,
-  slidesPerView: 'auto',
-  centeredSlides: 'auto',
-  spaceBetween: 16,
-  grabCursor: true,
-  speed: 600,
+let testimonialSwiper = null;
+function initializeTestimonialSwiper() {
+  const swiperElement = document.querySelector('.testimonial__swiper');
+  if (!swiperElement) return;
 
-  pagination: {
-    el: '.swiper-pagination',
+  if (testimonialSwiper) {
+    testimonialSwiper.destroy(true, true);
+  }
 
+  testimonialSwiper = new Swiper('.testimonial__swiper', {
+    direction: 'vertical',
+    loop: true,
+    slidesPerView: 'auto',
+    centeredSlides: 'auto',
+    spaceBetween: 16,
+    grabCursor: true,
+    speed: 600,
+    pagination: {
+      el: '.swiper-pagination'
+    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     }
+  });
+}
+
+document.addEventListener('dynamicPageLoad', (event) => {
+  if (event.detail.content === 'home.html') {
+    initializeTestimonialSwiper();
   }
-})
+});
 
 load();
 loadPageContent('home.html');
