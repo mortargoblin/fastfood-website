@@ -176,7 +176,7 @@ function initTestimonialsSwiper() {
     swiperContainer.swiper.destroy(true, true);
   }
 
-  new Swiper('.testimonial__swiper', {
+  const swiperInstance = new Swiper('.testimonial__swiper', {
     direction: 'vertical',
     loop: true,
     slidesPerView: 'auto',
@@ -193,6 +193,7 @@ function initTestimonialsSwiper() {
       prevEl: '.swiper-button-prev'
     }
   });
+  swiperContainer.swiper = swiperInstance;
 }
 
 document.addEventListener('dynamicPageLoad', (event) => {
