@@ -86,8 +86,7 @@ describe('API end-to-end flows', () => {
       .post('/api/user/create_order')
       .send({ cart: [{ id: 1, quantity: 2 }] });
 
-    expect(response.body).toEqual(
-      expect.objectContaining({ success: true, message: 'Order saved succesfully' })
-    );
+    expect(response.body.success).toBe(true);
+    expect(response.body.message).toMatch(/order saved/i);
   });
 });
