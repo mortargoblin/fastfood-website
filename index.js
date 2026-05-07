@@ -25,10 +25,14 @@ app.use('/api/user', user_endpoints);
 app.use('/api/admin', admin_endpoints);
 app.use('/api/provider', provider_endpoints);
 
-if (admin_functions.create_demo_products() === 0) {
-    logger.log(logger.LOGTYPE.INFO, 'Demo products created');
+if (process.env.NODE_ENV !== 'test') {
+    if (admin_functions.create_demo_products() === 0) {
+        logger.log(logger.LOGTYPE.INFO, 'Demo products created');
+    }
+
+    app.listen(PORT, () => {
+        logger.log(logger.LOGTYPE.INFO, `Server running on port ${PORT}`);
+    });
 }
 
-app.listen(PORT, () => {
-    logger.log(logger.LOGTYPE.INFO, `Server running on port ${PORT}`);
-});
+module.exports = app;
