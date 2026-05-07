@@ -89,6 +89,7 @@ async function delete_product(session_id, id) {
     return { success: true, message: 'Product deleted successfully' };
 }
 
+
 async function update_product(session_id, id, body) {
     if (!await _is_admin_session(session_id)) {
         return { success: false, message: 'Unauthorized' };

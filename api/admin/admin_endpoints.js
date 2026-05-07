@@ -53,4 +53,10 @@ router.put('/products/:id', async (req, res) => {
     res.json(result);
 });
 
+router.get('/orders', async (req, res) => {
+    const session_id = req.cookies.session_id;
+    const result = await admin_functions.list_orders(session_id);
+    res.json(result);
+});
+
 module.exports = router;
