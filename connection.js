@@ -152,7 +152,9 @@ if (process.env.NODE_ENV === 'test') {
             });
             return [{ affectedRows: 1 }];
         }
-        throw new Error(`Unsupported query in test mode: ${sql}`);
+        throw new Error(
+            `Unsupported query in test mode: ${sql}. Add handling to the in-memory query switch in connection.js.`
+        );
     };
 
     module.exports = {
