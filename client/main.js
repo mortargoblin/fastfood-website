@@ -1,3 +1,5 @@
+import Swiper from 'swiper';
+
 const nav = document.querySelector('nav');
 const homeBtn = document.querySelector('#home');
 const menuBtn = document.querySelector('#menu');
@@ -163,6 +165,25 @@ document.getElementById('map-modal').addEventListener('click', (e) => {
     document.getElementById('map-iframe').src = '';
   }
 });
+
+const swiper = new Swiper('.testimonial__swiper', {
+  direction: 'vertical',
+  loop: true,
+  slidesPerView: 'auto',
+  centeredSlides: 'auto',
+  spaceBetween: 16,
+  grabCursor: true,
+  speed: 600,
+
+  pagination: {
+    el: '.swiper-pagination',
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  }
+})
 
 load();
 loadPageContent('home.html');

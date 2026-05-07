@@ -1,30 +1,94 @@
 <div>
-  <!-- HERO SECTION -->
-  <div class="relative w-full" style="min-height: 92vh; background-image: url('img/banner.png'); background-size: cover; background-position: center; background-attachment: fixed;">
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-[#071E22]/60"></div>
+    <!-- HERO SECTION -->
+    <div class="relative w-full"
+         style="min-height: 92vh; background-image: url('img/banner.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-[#071E22]/60"></div>
 
-    <!-- Hero content -->
-    <div class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-32 hero-fadein" style="min-height: 92vh;">
-      <img src="img/NNiso.png" class="w-40 mb-6 drop-shadow-xl" alt="Northside Nugetti logo">
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#F4C095] drop-shadow-lg tracking-tight leading-tight mb-4">
-        Helsingin parhaat<br>
-        <span class="text-[#EE2E31]">burgerit.</span>
-      </h1>
-      <p class="text-[#F4C095]/90 text-xl sm:text-2xl mb-10 max-w-xl">
-        Maukkaat burgerit, nugetit ja ranut valmistettuna alusta asti tuoreista raaka-aineista
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <button onclick="document.getElementById('menu').click()"
-                class="bg-[#EE2E31] hover:bg-[#c0392b] text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all duration-200 cursor-pointer">
-          Katso ruokalista
-        </button>
-        <button onclick="document.getElementById('restaurants').click()"
-                class="bg-transparent border-2 border-[#F4C095] hover:bg-[#F4C095]/20 text-[#F4C095] font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all duration-200 cursor-pointer">
-          Löydä ravintola
-        </button>
-      </div>
+        <!-- Hero content -->
+        <div class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-32 hero-fadein"
+             style="min-height: 92vh;">
+            <img src="img/NNiso.png" class="w-40 mb-6 drop-shadow-xl" alt="Northside Nugetti logo">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#F4C095] drop-shadow-lg tracking-tight leading-tight mb-4">
+                Helsingin parhaat<br>
+                <span class="text-[#EE2E31]">burgerit.</span>
+            </h1>
+            <p class="text-[#F4C095]/90 text-xl sm:text-2xl mb-10 max-w-xl">
+                Maukkaat burgerit, nugetit ja ranut valmistettuna alusta asti tuoreista raaka-aineista
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button onclick="document.getElementById('menu').click()"
+                        class="bg-[#EE2E31] hover:bg-[#c0392b] text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all duration-200 cursor-pointer">
+                    Katso ruokalista
+                </button>
+                <button onclick="document.getElementById('restaurants').click()"
+                        class="bg-transparent border-2 border-[#F4C095] hover:bg-[#F4C095]/20 text-[#F4C095] font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all duration-200 cursor-pointer">
+                    Löydä ravintola
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
-  <img src="img/banner.png" class="w-200 m-auto mb-20 rounded-xl">
+    <!--- TÄSTÄ ALKAA TESTIMONIALS --->
+    <section class="flex flex-col items-center overflow-hidden">
+
+        <h2 class="text-xl font-bold p-4">
+            Mitä <br> asiakkaamme sanovat
+        </h2>
+        <div class="testimonial__swiper pb-25 container swiper">
+            <div class="swiper-wrapper">
+                <article class="w-280px shadow-2xl p-7 rounded-2xl items-center text-center swiper-slide">
+                    <img class="w-100px rounded-full border-4 border-sky-700 m-auto" src="img/NNpieni.png"
+                         alt="user-image">
+
+                    <h3 class="text-xl font-bold text-center">Aaro Saarinen</h3>
+                    <div class="flex justify-center items-center gap-4 ">
+                        <h3 class="font-bold">5.0</h3>
+                    </div>
+                    <p class="">
+                        Northside Nuggetista on tullut uusi lemppari masennusruoka paikkani!
+                        Jokainen puraisu vie minut lähemmäs epätoivon kuilua, mutta syötyäni
+                        saan uuden uskon siihen että kaikesta elämässä voi selvitä.
+                    </p>
+                </article>
+                <div class="pb-25">
+                    <article class="w-280px shadow-2xl p-7 rounded-2xl items-center text-center swiper-slide">
+                        <img class="w-100px rounded-full border-4 border-b-sky-700 m-auto" src="img/NNpieni.png"
+                             alt="user-image">
+
+                        <h3 class="text-xl font-bold text-center">Sampo Westman</h3>
+                        <div class="flex justify-center items-center gap-4 ">
+                            <h3 class="font-bold">5.0</h3>
+                        </div>
+                        <p class="">
+                            Northside Nuggetista on tullut uusi lemppari masennusruoka paikkani!
+                            Jokainen puraisu vie minut lähemmäs epätoivon kuilua, mutta syötyäni
+                            saan uuden uskon siihen että kaikesta elämässä voi selvitä.
+                        </p>
+                    </article>
+                </div>
+                <div class="pb-25">
+                    <article class="w-280px shadow-2xl p-7 rounded-2xl items-center text-center swiper-slide">
+                        <img class="w-100px rounded-full border-4 border-b-sky-700 m-auto" src="img/NNpieni.png"
+                             alt="user-image">
+
+                        <h3 class="text-xl font-bold text-center">Tom Laukkanen</h3>
+                        <div class="flex justify-center items-center gap-4 ">
+                            <h3 class="font-bold">5.0</h3>
+                        </div>
+                        <p class="">
+                            Northside Nuggetista on tullut uusi lemppari masennusruoka paikkani!
+                            Jokainen puraisu vie minut lähemmäs epätoivon kuilua, mutta syötyäni
+                            saan uuden uskon siihen että kaikesta elämässä voi selvitä.
+                        </p>
+                    </article>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+    </section>
+
+
 </div>
