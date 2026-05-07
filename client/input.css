@@ -1,2 +1,16 @@
 @import "tailwindcss";
 
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-fadein {
+    animation: heroFadeIn 1s ease-out both;
+}

@@ -3,7 +3,6 @@ const homeBtn = document.querySelector('#home');
 const menuBtn = document.querySelector('#menu');
 const restaurantsBtn = document.querySelector('#restaurants');
 const authBtn = document.querySelector('#auth');
-const infoBtn = document.querySelector('#info');
 const adminBtn = document.querySelector('#admin');
 
 const page = document.querySelector('#page');
@@ -29,6 +28,7 @@ async function loadPageContent(content, target = page) {
     }
 
     const html = await response.text();
+    window.scrollTo({ top: 0, behavior: 'instant' });
     target.innerHTML = html;
 
     const event = new CustomEvent('dynamicPageLoad', { detail: { content } });
@@ -58,9 +58,6 @@ async function load()
     loadPageContent('ravintolat.html');
   });
 
-  infoBtn.addEventListener('click', () => {
-    loadPageContent('info.html');
-  });
   authBtn.addEventListener('click', () => {
     loadPageContent('auth.html');
   });
