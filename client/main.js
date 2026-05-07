@@ -169,24 +169,37 @@ document.getElementById('map-modal').addEventListener('click', (e) => {
   }
 });
 
-const swiper = new Swiper('.testimonial__swiper', {
-  direction: 'vertical',
-  loop: true,
-  slidesPerView: 'auto',
-  centeredSlides: 'auto',
-  spaceBetween: 16,
-  grabCursor: true,
-  speed: 600,
+function initTestimonialsSwiper() {
+  const swiperContainer = document.querySelector('.testimonial__swiper');
+  if (!swiperContainer || typeof Swiper === 'undefined') return;
+  if (swiperContainer.swiper) {
+    swiperContainer.swiper.destroy(true, true);
+  }
 
-  pagination: {
-    el: '.swiper-pagination',
-
+  new Swiper('.testimonial__swiper', {
+    direction: 'vertical',
+    loop: true,
+    slidesPerView: 'auto',
+    centeredSlides: 'auto',
+    spaceBetween: 16,
+    grabCursor: true,
+    speed: 600,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     }
+  });
+}
+
+document.addEventListener('dynamicPageLoad', (event) => {
+  if (event.detail?.content === 'home.html') {
+    initTestimonialsSwiper();
   }
-})
+});
 
 load();
 loadPageContent('home.html');
