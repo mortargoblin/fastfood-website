@@ -19,4 +19,16 @@ router.post('/login', async (req, res) => {
     res.json(result); //
 });
 
+router.post('/create', async (req, res) => {
+
+    const { username, cart } = req.body;
+
+    const result = await order_functions.create_order(
+        username,
+        cart
+    );
+
+    res.json(result);
+});
+
 module.exports = router;

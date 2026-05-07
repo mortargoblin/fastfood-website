@@ -75,8 +75,45 @@ async function login(username, password) {
     };
 }
 
+async function create_order(cart) {
+    // DEFINE USERNAME HERE
+
+    if (!username || !cart || !Array.isArray(cart)) {
+        return {
+            success: false,
+            message: "Faulty order data"
+        };
+    }
+
+    try {
+
+        const cart_string = JSON.stringify(cart);
+
+        const result = await db.query(
+            'INSERT INTO orders (username, cart_data) VALUES (?, ?)',
+            [username, cart_string]
+        );
+
+        return {
+            success: true,
+            message: "Order saved succesfully",
+            order_id: result.insertId
+        };
+
+    } catch (err) {
+
+        console.error(err);
+
+        return {
+            success: false,
+            message: "Order saving failed"
+        };
+    }
+}
+
 module.exports = {
     register,
     login,
-    is_admin
+    is_admin,
+    create_order
 };
