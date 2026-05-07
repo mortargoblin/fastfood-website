@@ -54,6 +54,10 @@ async function load()
     updateMenuItems();
   });
 
+  restaurantsBtn.addEventListener('click', () => {
+    loadPageContent('ravintolat.html');
+  });
+
   infoBtn.addEventListener('click', () => {
     loadPageContent('info.html');
   });
@@ -146,6 +150,25 @@ function removeItemFromCart(itemId) {
     renderCart();
   }
 }
+
+function openMap(query) {
+  const modal = document.getElementById('map-modal');
+  const iframe = document.getElementById('map-iframe');
+  iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed&hl=fi`;
+  modal.showModal();
+}
+
+document.getElementById('map-modal-close').addEventListener('click', () => {
+  document.getElementById('map-modal').close();
+  document.getElementById('map-iframe').src = '';
+});
+
+document.getElementById('map-modal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.close();
+    document.getElementById('map-iframe').src = '';
+  }
+});
 
 load();
 loadPageContent('home.html');

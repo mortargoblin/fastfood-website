@@ -1,0 +1,186 @@
+<div class="max-w-6xl mx-auto px-6 py-10">
+  <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-transparent
+             bg-clip-text bg-gradient-to-r from-[#071E22] to-[#EE2E31]
+             drop-shadow-md tracking-tight text-center my-8 leading-snug">
+    Löydä lähin Northside Nugetti ravintolasi
+  </h1>
+  <p class="text-center text-[#071E22] text-lg mb-12 max-w-2xl mx-auto">
+    Northside Nugetti ravintolat palvelevat ympäri pääkaupunkialuetta.
+    Lähimmän ravintolasi yhteystiedot ja aukioloajat löydät valitsemalla
+    ravintolan alla olevasta listauksesta.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Ravintola 1 -->
+    <div class="bg-[#679289] text-[#071E22] rounded-2xl border-4 border-[#ee2e31] p-6 shadow-lg flex flex-col gap-4">
+      <h2 class="text-xl font-bold text-center border-b-2 border-[#071E22] pb-3">
+        Northside Nugetti Kamppi
+      </h2>
+      <ul class="flex flex-col gap-2 text-sm">
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+          </svg>
+          Kampin keskus, Helsinki
+        </li>
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.684l1.2 3.6a1 1 0 01-.263 1.044l-1.4 1.4a11.042 11.042 0 005.516 5.516l1.4-1.4a1 1 0 011.044-.263l3.6 1.2A1 1 0 0121 16.72V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V6a2 2 0 010-1z"/>
+          </svg>
+          +358 9 123 4567
+        </li>
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          kamppi@northsidenugetti.fi
+        </li>
+        <li>
+          <button onclick="openMap('Kamppi Shopping Centre, Helsinki')"
+             class="flex items-center gap-2 underline font-semibold hover:text-[#071E22] cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 13l4.553 2.276A1 1 0 0021 21.382V10.618a1 1 0 00-1.447-.894L15 12m0 8V12m0 0L9 7"/>
+            </svg>
+            Näytä kartalla
+          </button>
+        </li>
+      </ul>
+      <div>
+        <h3 class="font-bold mb-2">Aukioloajat</h3>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[#071E22]">
+              <th class="text-left py-1">Päivä</th>
+              <th class="text-left py-1">Aukiolo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ma</td><td>10:00–21:00</td></tr>
+            <tr><td>Ti</td><td>10:00–21:00</td></tr>
+            <tr><td>Ke</td><td>10:00–21:00</td></tr>
+            <tr><td>To</td><td>10:00–21:00</td></tr>
+            <tr><td>Pe</td><td>10:00–22:00</td></tr>
+            <tr><td>La</td><td>10:00–22:00</td></tr>
+            <tr><td>Su</td><td>11:00–20:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Ravintola 2 -->
+    <div class="bg-[#679289] text-[#071E22] rounded-2xl border-4 border-[#ee2e31] p-6 shadow-lg flex flex-col gap-4">
+      <h2 class="text-xl font-bold text-center border-b-2 border-[#071E22] pb-3">
+        Northside Nugetti Pasila
+      </h2>
+      <ul class="flex flex-col gap-2 text-sm">
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+          </svg>
+          Triplan ostoskeskus, Helsinki
+        </li>
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.684l1.2 3.6a1 1 0 01-.263 1.044l-1.4 1.4a11.042 11.042 0 005.516 5.516l1.4-1.4a1 1 0 011.044-.263l3.6 1.2A1 1 0 0121 16.72V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V6a2 2 0 010-1z"/>
+          </svg>
+          +358 9 234 5678
+        </li>
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          pasila@northsidenugetti.fi
+        </li>
+        <li>
+          <button onclick="openMap('Tripla Shopping Centre, Pasila, Helsinki')"
+             class="flex items-center gap-2 underline font-semibold hover:text-[#071E22] cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 13l4.553 2.276A1 1 0 0021 21.382V10.618a1 1 0 00-1.447-.894L15 12m0 8V12m0 0L9 7"/>
+            </svg>
+            Näytä kartalla
+          </button>
+        </li>
+      </ul>
+      <div>
+        <h3 class="font-bold mb-2">Aukioloajat</h3>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[#071E22]">
+              <th class="text-left py-1">Päivä</th>
+              <th class="text-left py-1">Aukiolo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ma</td><td>10:30–20:00</td></tr>
+            <tr><td>Ti</td><td>10:30–20:00</td></tr>
+            <tr><td>Ke</td><td>10:30–20:00</td></tr>
+            <tr><td>To</td><td>10:30–20:00</td></tr>
+            <tr><td>Pe</td><td>10:30–21:00</td></tr>
+            <tr><td>La</td><td>11:00–21:00</td></tr>
+            <tr><td>Su</td><td>11:00–19:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Ravintola 3-->
+    <div class="bg-[#679289] text-[#071E22] rounded-2xl border-4 border-[#ee2e31] p-6 shadow-lg flex flex-col gap-4">
+      <h2 class="text-xl font-bold text-center border-b-2 border-[#071E22] pb-3">
+        Northside Nugetti Itäkeskus
+      </h2>
+      <ul class="flex flex-col gap-2 text-sm">
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+          </svg>
+          Itäkeskuksen kauppakeskus, Helsinki
+        </li>
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.684l1.2 3.6a1 1 0 01-.263 1.044l-1.4 1.4a11.042 11.042 0 005.516 5.516l1.4-1.4a1 1 0 011.044-.263l3.6 1.2A1 1 0 0121 16.72V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V6a2 2 0 010-1z"/>
+          </svg>
+          +358 9 345 6789
+        </li>
+        <li class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          itakeskus@northsidenugetti.fi
+        </li>
+        <li>
+          <button onclick="openMap('Itäkeskus Shopping Centre, Helsinki')"
+             class="flex items-center gap-2 underline font-semibold hover:text-[#071E22] cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 13l4.553 2.276A1 1 0 0021 21.382V10.618a1 1 0 00-1.447-.894L15 12m0 8V12m0 0L9 7"/>
+            </svg>
+            Näytä kartalla
+          </button>
+        </li>
+      </ul>
+      <div>
+        <h3 class="font-bold mb-2">Aukioloajat</h3>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[#071E22]">
+              <th class="text-left py-1">Päivä</th>
+              <th class="text-left py-1">Aukiolo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ma</td><td>10:00–20:00</td></tr>
+            <tr><td>Ti</td><td>10:00–20:00</td></tr>
+            <tr><td>Ke</td><td>10:00–20:00</td></tr>
+            <tr><td>To</td><td>10:00–20:00</td></tr>
+            <tr><td>Pe</td><td>10:00–21:00</td></tr>
+            <tr><td>La</td><td>10:00–21:00</td></tr>
+            <tr><td>Su</td><td>11:00–19:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
