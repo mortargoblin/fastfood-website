@@ -19,11 +19,11 @@ router.post('/login', async (req, res) => {
     res.json(result); //
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create_order', async (req, res) => {
 
     const { username, cart } = req.body;
 
-    const result = await order_functions.create_order(
+    const result = await user_functions.create_order(
         username,
         cart
     );

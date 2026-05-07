@@ -134,7 +134,7 @@ async function checkout() {
       .textContent = 'Sinun tulee olla kirjautuneena sisään tilausta varten';
   } else {
 
-    await fetch('/api/orders/create', {
+    await fetch('api/user/create_order', {
       method: 'POST',
 
       headers: {
