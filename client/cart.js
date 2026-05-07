@@ -28,6 +28,7 @@ function loadCart() {
 }
 
 function emptyCart() {
+  cart = [];
   localStorage.removeItem('cart');
 }
 

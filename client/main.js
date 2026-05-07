@@ -69,17 +69,17 @@ async function load()
   }
 }
 
+/*
 function renderCart() {
   const cartEl = document.getElementById("cart-dialog");
   cartEl.innerHTML = "";
 
-  // accessing global variable "cart" astaghfirullah 🛐
   cart.forEach(item => {
     const div = document.createElement("div");
     div.textContent = `${item.name} x${item.quantity}`;
     cartEl.appendChild(div);
   });
-}
+}*/
 
 // cart dialog 
 const cartBtn = document.getElementById("cart-btn");
@@ -97,7 +97,7 @@ closeBtn.addEventListener('click', () => {
 });
 
 checkoutBtn.addEventListener('click', () => {
-  loadPageContent('checkout.html');
+  checkout();
   dialog.close();
 });
 
@@ -109,7 +109,8 @@ function renderCart() {
 
   let total = 0;
 
-  console.log('cart from renderer', cart);
+  console.log('cart', cart);
+  // accessing global variable "cart" astaghfirullah 🛐
   cart.forEach(item => {
     const tr = document.createElement('tr');
     tr.classList.add('text-center');
@@ -135,6 +136,13 @@ function renderCart() {
   });
 
   totalEl.textContent = `Total: ${total.toFixed(2)}€`;
+  cart.total = total;
+}
+
+function checkout() {
+  // 🤯 api call here order(cart);
+  dialog.close();
+  emptyCart();
 }
 
 function openMap(query) {
