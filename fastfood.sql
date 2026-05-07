@@ -46,6 +46,18 @@ CREATE TABLE `products`  (
 
 -- ----------------------------
 
+-- ====[ORDERS]====
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    uname VARCHAR(100) NOT NULL,
+    cart_data VARCHAR(5000) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id)
+);
+-- ================
+
 -- ----------------------------
 -- Table structure for users
 -- ----------------------------
