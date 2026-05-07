@@ -150,18 +150,16 @@ async function checkout() {
     document.querySelector('#cart-total')
       .textContent = 'Sinun tulee olla kirjautuneena sisään tilausta varten';
   } else {
-
-    await fetch('api/user/create_order', {
+    const result = await fetch('api/user/create_order', {
       method: 'POST',
-
       headers: {
         'Content-Type': 'application/json'
       },
-
       body: JSON.stringify({
         cart
       })
     });
+    console.log(result);
     emptyCart();
     dialog.close;
   }

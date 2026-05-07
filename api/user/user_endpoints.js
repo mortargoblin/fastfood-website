@@ -29,11 +29,12 @@ router.post('/logout', (req, res) => {
 router.post('/create_order', async (req, res) => {
 
     const { username, cart } = req.body;
-
+    
     const result = await user_functions.create_order(
         username,
         cart
     );
+    console.log(result);
 
     res.json(result);
 });
