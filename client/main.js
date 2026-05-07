@@ -186,24 +186,28 @@ document.getElementById('map-modal').addEventListener('click', (e) => {
   }
 });
 
-const swiper = new Swiper('.testimonial__swiper', {
-  direction: 'vertical',
-  loop: true,
-  slidesPerView: 'auto',
-  centeredSlides: 'auto',
-  spaceBetween: 16,
-  grabCursor: true,
-  speed: 600,
 
-  pagination: {
-    el: '.swiper-pagination',
-
+setTimeout(() => {
+  const swiper = new Swiper('.testimonial__swiper', {
+    loop: true,
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 16,
+    grabCursor: true,
+    speed: 600,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
-  }
-})
+      prevEl: '.swiper-button-prev',
+    },
+  })
+
+  console.log('Slides loaded:', swiper.slides.length)
+}, 1000);
+
 
 load();
 loadPageContent('home.html');
