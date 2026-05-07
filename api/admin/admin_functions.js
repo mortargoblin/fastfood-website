@@ -47,7 +47,8 @@ async function create_product(session_id, body, bypass_session = false) {
         name: _pick_value(body, ['name', 'product_name', 'title']),
         price: _pick_value(body, ['price', 'product_price']),
         description: _pick_value(body, ['description', 'product_description']),
-        image_url: _pick_value(body, ['image_url', 'image', 'product_image'])
+        image_url: _pick_value(body, ['image_url', 'image', 'product_image']),
+        allergens: _pick_value(body, ['allergens', 'product_allergens'])
     };
 
     const insertColumns = [];
@@ -101,7 +102,8 @@ async function update_product(session_id, id, body) {
         name: _pick_value(body, ['name', 'product_name', 'title']),
         price: _pick_value(body, ['price', 'product_price']),
         description: _pick_value(body, ['description', 'product_description']),
-        image_url: _pick_value(body, ['image_url', 'image', 'product_image'])
+        image_url: _pick_value(body, ['image_url', 'image', 'product_image']),
+        allergens: _pick_value(body, ['allergens', 'product_allergens'])
     };
     const updateColumns = [];
     const updateValues = [];
@@ -139,55 +141,64 @@ async function create_demo_products() {
             name: 'Lame Burger',
             price: 5.99,
             description: 'A very lame burger with no taste.',
-            image_url: '/img/NNbaagaa.png'
+            image_url: '/img/NNbaagaa.png',
+            allergens: '(L)'
         },
         {
             name: 'Mediocre Fries',
             price: 2.99,
             description: 'Fries that are just okay, nothing special.',
-            image_url: '/img/NNfries.png'
+            image_url: '/img/NNfries.png',
+            allergens: '(L, M, G)'
         },
         {
             name: 'Bland Chicken Burger',
             price: 4.99,
             description: 'A bland chicken burger that tastes like nothing.',
-            image_url: '/img/NNchickenbaaga.png'
+            image_url: '/img/NNchickenbaaga.png',
+            allergens: '(L)'
         },
         {
             name: 'Nuggets of Doom and Despair',
             price: 3.99,
             description: 'Chicken nuggets that will make you question your life choices.',
-            image_url: '/img/NNnugs.png'
+            image_url: '/img/NNnugs.png',
+            allergens: '(L, G)'
         },
         {
             name: 'Big Burger for Big Sadness',
             price: 13.99,
             description: 'A sad burger that tastes like disappointment.',
-            image_url: '/img/NNiso.png'
+            image_url: '/img/NNiso.png',
+            allergens: '(L)'
         },
         {
             name: 'Small Burger of Existential Dread',
             price: 2.99,
             description: 'A tiny burger that encapsulates the feeling of existential dread.',
-            image_url: '/img/NNpieni.png'
+            image_url: '/img/NNpieni.png',
+            allergens: '(L)'
         },
         {
             name: 'Sad Soda',
             price: 1.99,
             description: 'A sad soda for sad people.',
-            image_url: '/img/NNdrink.png'
+            image_url: '/img/NNdrink.png',
+            allergens: '(L, M, G)'
         },
         {
             name: "Milkshake of Misery",
             price: 4.99,
             description: "A milkshake that is as miserable as it sounds.",
-            image_url: "/img/NNcmilks.png"
+            image_url: "/img/NNcmilks.png",
+            allergens: '(L, G)'
         },
             {
             name: "Pink Milkshake from the Cows of Despair",
             price: 5.49,
             description: "This one is not even so bad",
-            image_url: "/img/NNsmilks.png"
+            image_url: "/img/NNsmilks.png",
+            allergens: '(L, G)'
         }
     ];
 

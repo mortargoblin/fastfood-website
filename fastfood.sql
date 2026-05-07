@@ -40,14 +40,11 @@ CREATE TABLE `products`  (
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci NULL DEFAULT NULL,
   `price` float NULL DEFAULT NULL,
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci NULL DEFAULT NULL,
+    `allergens` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_uca1400_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of products
--- ----------------------------
-INSERT INTO `products` VALUES (1, 'big mac', 'aa', 3, '/burgir.jpg');
-INSERT INTO `products` VALUES (2, 'aa', 'aa', NULL, '/burgir.jpg');
 
 -- ----------------------------
 -- Table structure for users

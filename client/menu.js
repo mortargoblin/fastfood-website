@@ -29,6 +29,7 @@ async function updateMenuItems() {
         <img src="${items[i].image_url}" class="max-w-50 m-auto" alt="item">
         <div class="text-white text-center text-2xl font-bold">${items[i].name.toUpperCase()}</div>
         <p class="text-center">${items[i].description}</p>
+        <p class="text-center"${items[i].allergens}></p>
         <div class="text-center font-bold">${items[i].price}€</div>
         <button  class="add-to-cart cursor-pointer hover:font-bold"
         data-id=${items[i].id} data-name='${items[i].name}' data-price=${items[i].price}
