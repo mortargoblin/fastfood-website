@@ -25,6 +25,14 @@ async function _session_exists(session_id) {
     return result.length > 0;
 }
 
+async function _get_user_by_session(session_id) {
+    const [result] = await db.query('SELECT id, username, tier FROM users WHERE session_id = ?', [session_id]);
+    if (result.length === 0) {
+         return null;
+    }
+    return result[0];
+}
+
 async function is_admin(username) {
     const [result] = await db.query('SELECT tier FROM users WHERE username = ?', [username]);
     if (result.length === 0) {
@@ -47,18 +55,18 @@ async function login(username, password) {
     if (result.length === 0) {
         return { success: false, message: "Invalid username or password" }; //Actual issue: username does not exist. Do not network.
     }
-
+    
     const user = result[0];
     const match = await bcrypt.compare(password, user.password_bcrypt);
-
+    
     if (!match) {
         return { success: false, message: "Invalid username or password" }; //Actual issue: password does not match. Do not network.
     }
-
+    
     const session_id = await generate_session();
-
+    
     await db.query('UPDATE users SET session_id = ? WHERE id = ?', [session_id, user.id]); //This will never fail, so I don't bother with error handling.
-
+    
     return {
         success: true,
         message: "Login successful",
@@ -67,8 +75,51 @@ async function login(username, password) {
     };
 }
 
+async function create_order(session_id, cart) {
+    // DEFINE USERNAME HERE
+
+    const user = await _get_user_by_session(session_id);
+    if (!user) {
+        return { success: false, message: "Invalid session" };
+    }
+    const username = user.username;
+
+    if (!username || !cart || !Array.isArray(cart)) {
+        return {
+            success: false,
+            message: "Faulty order data"
+        };
+    }
+
+    try {
+
+        const cart_string = JSON.stringify(cart);
+
+        const result = await db.query(
+            'INSERT INTO orders (username, cart_data) VALUES (?, ?)',
+            [username, cart_string]
+        );
+
+        return {
+            success: true,
+            message: "Order saved succesfully",
+            order_id: result.insertId
+        };
+
+    } catch (err) {
+
+        console.error(err);
+
+        return {
+            success: false,
+            message: "Order saving failed"
+        };
+    }
+}
+
 module.exports = {
     register,
     login,
-    is_admin
+    is_admin,
+    create_order
 };

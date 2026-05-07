@@ -71,18 +71,6 @@ async function load()
   }
 }
 
-/*
-function renderCart() {
-  const cartEl = document.getElementById("cart-dialog");
-  cartEl.innerHTML = "";
-
-  cart.forEach(item => {
-    const div = document.createElement("div");
-    div.textContent = `${item.name} x${item.quantity}`;
-    cartEl.appendChild(div);
-  });
-}*/
-
 // cart dialog 
 const cartBtn = document.getElementById("cart-btn");
 const dialog = document.getElementById("cart-dialog");
@@ -100,7 +88,6 @@ closeBtn.addEventListener('click', () => {
 
 checkoutBtn.addEventListener('click', () => {
   checkout();
-  dialog.close();
 });
 
 function renderCart() {
@@ -141,10 +128,28 @@ function renderCart() {
   cart.total = total;
 }
 
-function checkout() {
-  // 🤯 api call here order(cart);
-  dialog.close();
-  emptyCart();
+async function checkout() {
+  const loggedInCookie = await getCookie('logged_in');
+  console.log(loggedInCookie);
+  if (!loggedInCookie) {
+    document.querySelector('#cart-total')
+      .textContent = 'Sinun tulee olla kirjautuneena sisään tilausta varten';
+  } else {
+
+    await fetch('api/user/create_order', {
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        cart
+      })
+    });
+    emptyCart();
+    dialog.close;
+  }
 }
 
 function openMap(query) {

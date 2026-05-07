@@ -13,9 +13,22 @@ router.post('/login', async (req, res) => {
     const result = await user_functions.login(username, password);
     if (result.success) {
         res.cookie('session_id', result.session_id, { httpOnly: true });
+        res.cookie('logged_in', 'true', { httpOnly: false });
         res.cookie("clientside_tier", result.tier, { httpOnly: false }); //Clientside tier cookie is only used for UI purposes. Not a security risk.
     }
     res.json(result); //
+});
+
+router.post('/create_order', async (req, res) => {
+
+    const { username, cart } = req.body;
+
+    const result = await user_functions.create_order(
+        username,
+        cart
+    );
+
+    res.json(result);
 });
 
 module.exports = router;
