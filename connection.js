@@ -1,7 +1,12 @@
 "use strict";
+/**
+ * @file connection.js
+ * @description Creates and exports a mysql2 connection pool for the fastfood database.
+ */
 var mysql = require('mysql2/promise');
 const logger = require('./logger.js');
 
+/** @type {import('mysql2/promise').Pool} */
 let pool;
 
 

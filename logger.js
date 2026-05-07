@@ -3,10 +3,19 @@ const fs = require('fs');
 const current_log = './logs/runtime.log';
 let initialized = false;
 
+/**
+ * Enum for log severity levels.
+ * @readonly
+ * @enum {number}
+ */
 const LOGTYPE = {
+    /** Informational message */
     INFO: 0,
+    /** Warning message */
     WARN: 1,
+    /** Error message */
     ERROR: 2,
+    /** Fatal error message */
     FATAL: 3,
 }
 
@@ -19,6 +28,11 @@ const COLORS = {
     CYAN: "\x1b[36m"
 };
 
+/**
+ * Initializes the logger by creating the log directory and runtime log file.
+ * Clears any existing runtime log on startup.
+ * @returns {void}
+ */
 function init()
 {
     if (!fs.existsSync('./logs'))
@@ -34,6 +48,13 @@ function init()
     initialized = true;
 }
 
+/**
+ * Logs a message to both the console (with color) and the runtime log file.
+ * Automatically initializes the logger if it has not been initialized yet.
+ * @param {LOGTYPE} type - The severity level of the log message.
+ * @param {string} message - The message to log.
+ * @returns {void}
+ */
 function log(type, message)
 {
     if (!initialized)

@@ -1,3 +1,14 @@
+/**
+ * @file admin.js
+ * @description Client-side admin panel logic: product listing, creation, editing, and deletion.
+ * Listens for the `dynamicPageLoad` event to initialize when `admin.html` is loaded.
+ */
+
+/**
+ * Updates the status message element on the admin page.
+ * @param {string} message - The message to display in `#admin-message`.
+ * @returns {Promise<void>}
+ */
 async function updateAdminStatus(message) {
     const statusElement = document.getElementById('admin-message');
     if (statusElement) {
@@ -5,6 +16,12 @@ async function updateAdminStatus(message) {
     }
 }
 
+/**
+ * Safely parses a JSON response from a fetch `Response` object.
+ * Falls back to a generic error payload if parsing fails or the response is not OK.
+ * @param {Response} response - The fetch API response object.
+ * @returns {Promise<{success: boolean, message: string, [key: string]: any}>} Parsed payload.
+ */
 async function parseResponse(response) {
     let payload;
     try {
@@ -20,6 +37,13 @@ async function parseResponse(response) {
     return payload;
 }
 
+/**
+ * Performs a fetch request and returns a parsed JSON payload.
+ * Returns a network error payload if the request itself throws.
+ * @param {string} url - The request URL.
+ * @param {RequestInit} [options={}] - Optional fetch options (method, headers, body, etc.).
+ * @returns {Promise<{success: boolean, message: string, [key: string]: any}>} Parsed response payload.
+ */
 async function apiRequest(url, options = {}) {
     try {
         const response = await fetch(url, options);
@@ -29,10 +53,21 @@ async function apiRequest(url, options = {}) {
     }
 }
 
+/**
+ * Returns the display name of a product. Falls back to `#<id>` if name is not set.
+ * @param {{id: number, name?: string}} product - The product object.
+ * @returns {string} The display name.
+ */
 function productDisplayName(product) {
     return product.name ?? `#${product.id}`;
 }
 
+/**
+ * Returns a formatted price string for a product, e.g. ` (9.99)`.
+ * Returns an empty string if price is not set.
+ * @param {{price?: number}} product - The product object.
+ * @returns {string} Formatted price or empty string.
+ */
 function productDisplayPrice(product) {
     if (product.price !== undefined && product.price !== null) {
         return ` (${product.price})`;
@@ -40,6 +75,11 @@ function productDisplayPrice(product) {
     return '';
 }
 
+/**
+ * Fetches all products from the admin API and renders them as a list in `#product-list`.
+ * Each list item includes Edit and Delete action buttons.
+ * @returns {Promise<void>}
+ */
 async function loadProducts() {
     const result = await apiRequest('/api/admin/products');
     if (!result.success) {
@@ -113,6 +153,10 @@ async function loadProducts() {
     }
 }
 
+/**
+ * Listens for the `dynamicPageLoad` custom event.
+ * When `admin.html` is loaded, wires up the create-product form and loads the product list.
+ */
 document.addEventListener('dynamicPageLoad', (event) => {
     if (!event.detail.content.includes('admin.html')) {
         return;

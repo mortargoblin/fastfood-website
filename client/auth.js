@@ -1,8 +1,26 @@
+/**
+ * @file auth.js
+ * @description Handles login and registration form submission on the auth page.
+ * Listens for the `dynamicPageLoad` event to initialize when `auth.html` is loaded.
+ */
+
+/**
+ * Updates the status message element on the auth page.
+ * @param {string} message - The message to display in `#auth-message`.
+ * @returns {Promise<void>}
+ */
 async function updateStatus(message) {
     const statusElement = document.getElementById('auth-message');
     statusElement.textContent = message;
 }
 
+/**
+ * Listens for the `dynamicPageLoad` custom event.
+ * When `auth.html` is loaded, wires up:
+ * - Tab toggle buttons (`.toggle-btn`) to switch between login and register panels.
+ * - The login form to submit credentials to `POST /api/user/login`.
+ * - The register form to submit credentials to `POST /api/user/register`.
+ */
 document.addEventListener('dynamicPageLoad', (event) => {
     console.log('dynamicPageLoad event received with content:', event.detail.content);
 

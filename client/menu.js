@@ -1,3 +1,14 @@
+/**
+ * @file menu.js
+ * @description Client-side menu page logic: fetches products from the API and renders them into the menu grid.
+ * Listens for the `dynamicPageLoad` event to initialize when the menu page is loaded.
+ */
+
+/**
+ * Fetches the list of menu items from the provider API.
+ * @returns {Promise<Array<{id: number, name: string, price: number, description: string, image_url: string, allergens: string}>>}
+ *   Array of product objects, or an empty array on error.
+ */
 async function fetchMenuItems() {
   try {
     const response = await fetch('/api/provider/products');
@@ -13,6 +24,11 @@ async function fetchMenuItems() {
   }
 }
 
+/**
+ * Fetches and renders all menu items into the `#menu-grid` element.
+ * Each item is rendered as a card with an "Add to cart" button.
+ * @returns {Promise<void>}
+ */
 async function updateMenuItems() {
   console.log('updateMenuItems() called');
 
@@ -39,6 +55,11 @@ async function updateMenuItems() {
   }
 }
 
+/**
+ * Listens for the `dynamicPageLoad` custom event and initializes the menu
+ * when `menu.html` is loaded. Attaches click handlers to all add-to-cart buttons
+ * and loads the persisted cart from localStorage.
+ */
 document.addEventListener('dynamicPageLoad', (event) => {
   if (event.detail.content === 'menu.html') {
     console.log('Menu page loaded, updating menu items');
