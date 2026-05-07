@@ -25,7 +25,7 @@ async function _session_exists(session_id) {
     return result.length > 0;
 }
 
-async function get_user_by_session(session_id) {
+async function _get_user_by_session(session_id) {
     const [result] = await db.query('SELECT id, username, tier FROM users WHERE session_id = ?', [session_id]);
     if (result.length === 0) {
          return null;
@@ -75,8 +75,14 @@ async function login(username, password) {
     };
 }
 
-async function create_order(cart) {
+async function create_order(session_id, cart) {
     // DEFINE USERNAME HERE
+
+    const user = await _get_user_by_session(session_id);
+    if (!user) {
+        return { success: false, message: "Invalid session" };
+    }
+    const username = user.username;
 
     if (!username || !cart || !Array.isArray(cart)) {
         return {
