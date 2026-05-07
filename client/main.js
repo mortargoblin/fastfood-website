@@ -139,9 +139,18 @@ function renderCart() {
   cart.total = total;
 }
 
-function checkout() {
-  // 🤯 api call here order(cart);
-  dialog.close();
+async function checkout() {
+  await fetch('/api/orders/create', {
+    method: 'POST',
+
+    headers: {
+      'Content-Type': 'application/json'
+    },
+
+    body: JSON.stringify({
+      cart
+    })
+  });
   emptyCart();
 }
 
