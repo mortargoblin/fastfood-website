@@ -14,7 +14,7 @@ A full-stack web application for a fictional fast food chain. Built with Node.js
 
 ## Feedback
 
-Feedback form: *(link here)*
+[Feedback form](https://metropoliafi-my.sharepoint.com/:w:/g/personal/janetjk_metropolia_fi/IQBkMdUXgS2kTp4QC7O4Ffa-AZxeLHN_CchQdwvZjhTnarM?e=fhGfoX)
 
 ---
 
@@ -167,7 +167,9 @@ run-tailwind.bat
 
 ## Test Accounts
 
-No accounts are pre-seeded by the database setup script — you need to register one manually via the **Login / Register** page.
+username: 1
+password: 1
+(admin account)
 
 To create an **admin account**, register a regular account first, then manually update its tier in the database:
 
