@@ -53,6 +53,14 @@ async function updateMenuItems() {
       </div>`
     );
   }
+
+  //Get a random seed based on the current weekday, and place a red border around the item at that index to highlight it as a "special of the day"
+  const seed = new Date().getDay();
+  const specialItem = grid.children[seed % items.length];
+  if (specialItem) {
+    specialItem.classList.add('border-4', 'border-red-500');
+    console.log(`Special of the day: ${items[seed % items.length].name}`);
+  }
 }
 
 /**
