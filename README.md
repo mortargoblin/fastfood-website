@@ -14,7 +14,7 @@ A full-stack web application for a fictional fast food chain. Built with Node.js
 
 ## Feedback
 
-Feedback form: *(link here)*
+[Feedback form](https://metropoliafi-my.sharepoint.com/:w:/g/personal/janetjk_metropolia_fi/IQBkMdUXgS2kTp4QC7O4Ffa-AZxeLHN_CchQdwvZjhTnarM?e=fhGfoX)
 
 ---
 
