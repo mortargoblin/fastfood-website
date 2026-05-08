@@ -167,7 +167,9 @@ run-tailwind.bat
 
 ## Test Accounts
 
-No accounts are pre-seeded by the database setup script — you need to register one manually via the **Login / Register** page.
+username: 1
+password: 1
+(admin account)
 
 To create an **admin account**, register a regular account first, then manually update its tier in the database:
 
