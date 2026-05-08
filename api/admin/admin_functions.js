@@ -265,10 +265,21 @@ async function create_demo_products() {
     return 0;
 }
 
+async function list_orders(session_id) {
+    if (!await _is_admin_session(session_id)) {
+        return { success: false, message: 'Unauthorized' };
+    }
+    const [orders] = await db.query('SELECT * FROM orders ORDER BY id DESC');
+    return { success: true, orders };
+}
+
+
 module.exports = {
     list_products,
     create_product,
     delete_product,
     update_product,
-    create_demo_products
+    create_demo_products,
+    list_orders
+
 };

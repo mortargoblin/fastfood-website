@@ -33,6 +33,7 @@ router.post('/login', async (req, res) => {
         res.cookie('session_id', result.session_id, { httpOnly: true });
         res.cookie("clientside_tier", result.tier, { httpOnly: false });
         res.cookie("clientside_username", result.username, { httpOnly: false });
+        res.cookie("logged_in", result.username, { httpOnly: false });
     }
     res.json(result);
 });

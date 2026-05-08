@@ -153,6 +153,26 @@ async function loadProducts() {
     }
 }
 
+function loadOrders() {
+    apiRequest('/api/admin/orders').then(result => {
+        if (!result.success) {
+            updateAdminStatus(result.message || 'Failed to load orders');
+            return;
+        }
+    const orderList = document.getElementById('order-list');
+    if (!orderList) {
+        return;
+    }
+
+    orderList.innerHTML = '';
+    for (const order of result.orders) {
+        const item = document.createElement('li');
+        item.textContent = `Order #${order.id} - ${order.uname} (${order.cart_data}) - Total: ${order.created_at}`;
+        orderList.appendChild(item);
+    }
+});
+}
+
 /**
  * Listens for the `dynamicPageLoad` custom event.
  * When `admin.html` is loaded, wires up the create-product form and loads the product list.
@@ -189,4 +209,5 @@ document.addEventListener('dynamicPageLoad', (event) => {
     }
 
     loadProducts();
+    loadOrders();
 });
