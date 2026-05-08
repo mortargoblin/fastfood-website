@@ -137,7 +137,7 @@ npm install
 Run the structure file against your MySQL server to create the database, user, and tables:
 
 ```bash
-mysql -u root -p < fastfood_structure_fixed.sql
+mysql -u root -p < fastfood.sql
 ```
 
 This will:
